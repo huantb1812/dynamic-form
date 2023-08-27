@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { HeaderDfFormComponent } from './header-df-form/header-df-form.component';
 import { FieldsComponent } from './fields/fields.component';
 import { JsonFormViewerModule } from './json-form-viewer/json-form-viewer.module';
+import { FieldDetailsComponent } from './field-details/field-details.component';
 
 @NgModule({
   imports: [CommonModule, MaterialsModule, FormsModule,JsonFormViewerModule],
@@ -15,6 +16,7 @@ import { JsonFormViewerModule } from './json-form-viewer/json-form-viewer.module
     FilterPipe,
     HeaderDfFormComponent,
     FieldsComponent,
+    FieldDetailsComponent
   ],
   exports: [
     MaterialsModule,
@@ -23,7 +25,8 @@ import { JsonFormViewerModule } from './json-form-viewer/json-form-viewer.module
     FormsModule,
     HeaderDfFormComponent,
     FieldsComponent,
-    JsonFormViewerModule
+    JsonFormViewerModule,
+    FieldDetailsComponent
   ],
 })
 export class SharedModuleModule {}

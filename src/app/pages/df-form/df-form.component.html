@@ -1,7 +1,13 @@
 <app-header-df-form></app-header-df-form>
 <mat-drawer-container class="container" autosize>
   <mat-drawer #drawer class="sidenav" mode="side" opened>
-    <app-fields> </app-fields>
+    <app-fields (changeField)="onChangeField($event)"> </app-fields>
+    <app-field-details
+      *ngIf="currentField"
+      [field]="currentField"
+      (close)="currentField = undefined"
+    >
+    </app-field-details>
   </mat-drawer>
 
   <div class="sidenav-content">

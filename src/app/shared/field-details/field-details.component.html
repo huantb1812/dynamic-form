@@ -1,0 +1,22 @@
+<div class="header">
+  <div class="back">
+    <button mat-icon-button (click)="onClose()">
+      <mat-icon>keyboard_backspace</mat-icon>
+    </button>
+  </div>
+  <div class="title">Edit {{ field?.displayName }}</div>
+  <div class="actions">
+    <button mat-icon-button (click)="onClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+<div class="body">
+  {{ field | json }}
+</div>
+<div class="footer">
+  <button mat-button (click)="onClose()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onClose()">
+    Create Field
+  </button>
+</div>
