@@ -5,10 +5,23 @@ import { HeaderPageComponent } from './header-page/header-page.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { HeaderDfFormComponent } from './header-df-form/header-df-form.component';
+import { FieldsComponent } from './fields/fields.component';
 
 @NgModule({
-  imports: [CommonModule, MaterialsModule,  FormsModule],
-  declarations: [HeaderPageComponent, FilterPipe, HeaderDfFormComponent],
-  exports: [MaterialsModule, HeaderPageComponent, FilterPipe,FormsModule, HeaderDfFormComponent],
+  imports: [CommonModule, MaterialsModule, FormsModule],
+  declarations: [
+    HeaderPageComponent,
+    FilterPipe,
+    HeaderDfFormComponent,
+    FieldsComponent,
+  ],
+  exports: [
+    MaterialsModule,
+    HeaderPageComponent,
+    FilterPipe,
+    FormsModule,
+    HeaderDfFormComponent,
+    FieldsComponent,
+  ],
 })
 export class SharedModuleModule {}

@@ -1,13 +1,7 @@
 <app-header-df-form></app-header-df-form>
 <mat-drawer-container class="container" autosize>
   <mat-drawer #drawer class="sidenav" mode="side" opened>
-    <div>
-      <p>Auto-resizing sidenav</p>
-      <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-      <button (click)="showFiller = !showFiller" mat-raised-button>
-        Toggle extra text
-      </button>
-    </div>
+    <app-fields> </app-fields>
   </mat-drawer>
 
   <div class="sidenav-content">
@@ -28,7 +22,6 @@
       <button type="button" mat-button (click)="drawer.toggle()">
         Toggle sidenav
       </button>
-
     </div>
   </div>
 </mat-drawer-container>
