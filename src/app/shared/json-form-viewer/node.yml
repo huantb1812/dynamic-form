@@ -1,0 +1,13 @@
+"@angular/flex-layout": "^12.0.0-beta.34",x
+    "@jsonforms/angular": "3.1.0",x
+    "@jsonforms/angular-material": "3.1.0",x
+    "@jsonforms/core": "3.1.0",x
+    "ajv": "^8.6.1",x
+    "core-js": "^2.4.1",x
+    "json-refs": "^3.0.4",x
+    "libphonenumber-js": "^1.6.8",x
+    "path": "^0.12.7",x
+    "random-words": "^1.1.0"x
+
+
+    ---force

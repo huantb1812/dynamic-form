@@ -6,9 +6,10 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { HeaderDfFormComponent } from './header-df-form/header-df-form.component';
 import { FieldsComponent } from './fields/fields.component';
+import { JsonFormViewerModule } from './json-form-viewer/json-form-viewer.module';
 
 @NgModule({
-  imports: [CommonModule, MaterialsModule, FormsModule],
+  imports: [CommonModule, MaterialsModule, FormsModule,JsonFormViewerModule],
   declarations: [
     HeaderPageComponent,
     FilterPipe,
@@ -22,6 +23,7 @@ import { FieldsComponent } from './fields/fields.component';
     FormsModule,
     HeaderDfFormComponent,
     FieldsComponent,
+    JsonFormViewerModule
   ],
 })
 export class SharedModuleModule {}
