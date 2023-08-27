@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-json-form-viewer',
   templateUrl: './json-form-viewer.component.html',
-  styleUrls: ['./json-form-viewer.component.css']
+  styleUrls: ['./json-form-viewer.component.scss']
 })
 export class JsonFormViewerComponent {
   // renderers = angularMaterialRenderers;
