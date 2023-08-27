@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DynamicForm } from 'src/app/shared';
 
 @Component({
@@ -34,7 +35,10 @@ export class DfListComponent implements OnInit {
   ];
   filterMasterForm: string = '';
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
+  onCreateForm() {
+    this.router.navigateByUrl('/create');
+  }
 }
