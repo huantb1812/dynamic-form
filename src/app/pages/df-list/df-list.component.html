@@ -1,3 +1,4 @@
+<app-header-page></app-header-page>
 <div class="description">
   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestiae
   repudiandae consequuntur repellat voluptate. Consequuntur quibusdam, fugiat
@@ -36,10 +37,10 @@
       <div class="tail">
         <div class="status">{{ item.status }}</div>
         <div class="actions">
-          <button mat-stroked-button>Edit</button>
-          <button mat-stroked-button color="primary">Preview</button>
-          <button mat-stroked-button color="accent">Duplicate</button>
-          <button mat-stroked-button color="warn">Share</button>
+          <button mat-stroked-button (click)="onEdit(item.id)">Edit</button>
+          <button mat-stroked-button color="primary" (click)="onPreview(item.id)">Preview</button>
+          <button mat-stroked-button color="accent" (click)="onDuplicate(item.id)">Duplicate</button>
+          <button mat-stroked-button color="warn" (click)="onShare(item.id)">Share</button>
         </div>
       </div>
     </div>
@@ -78,10 +79,10 @@
       <div class="tail">
         <div class="status">{{ item.status }}</div>
         <div class="actions">
-          <button mat-stroked-button>Edit</button>
-          <button mat-stroked-button color="primary">Preview</button>
-          <button mat-stroked-button color="accent">Duplicate</button>
-          <button mat-stroked-button color="warn">Share</button>
+          <button mat-stroked-button (click)="onEdit(item.id)">Edit</button>
+          <button mat-stroked-button color="primary" (click)="onPreview(item.id)">Preview</button>
+          <button mat-stroked-button color="accent" (click)="onDuplicate(item.id)">Duplicate</button>
+          <button mat-stroked-button color="warn" (click)="onShare(item.id)">Share</button>
         </div>
       </div>
     </div>

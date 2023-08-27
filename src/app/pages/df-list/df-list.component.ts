@@ -10,11 +10,13 @@ import { DynamicForm } from 'src/app/shared';
 export class DfListComponent implements OnInit {
   forms: DynamicForm[] = [
     {
+      id: '1',
       title: 'Dynamic form 001',
       lastUpdateTime: new Date(2023, 8, 1),
       status: 'closed',
     },
     {
+      id: '2',
       title: 'Dynamic form 002',
       lastUpdateTime: new Date(2023, 8, 2),
       status: 'opened',
@@ -23,11 +25,13 @@ export class DfListComponent implements OnInit {
   filterForm: string = '';
   masterForms: DynamicForm[] = [
     {
+      id: '3',
       title: 'Master form 001',
       lastUpdateTime: new Date(2023, 8, 1),
       status: 'closed',
     },
     {
+      id: '4',
       title: 'Master form 002',
       lastUpdateTime: new Date(2023, 8, 2),
       status: 'opened',
@@ -40,5 +44,17 @@ export class DfListComponent implements OnInit {
   ngOnInit() {}
   onCreateForm() {
     this.router.navigateByUrl('/create');
+  }
+  onEdit(id: string) {
+    this.router.navigateByUrl('/edit/' + id);
+  }
+  onPreview(id: string) {
+    this.router.navigateByUrl('/preview/' + id);
+  }
+  onDuplicate(id: string) {
+    this.router.navigateByUrl('/');
+  }
+  onShare(id: string) {
+    this.router.navigateByUrl('/');
   }
 }

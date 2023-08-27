@@ -5,17 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MaterialsModule } from './shared';
 import { DfListComponent } from './pages/df-list/df-list.component';
 import { SharedModuleModule } from './shared/shared-module.module';
+import { DfFormComponent } from './pages/df-form/df-form.component';
 
 @NgModule({
-  declarations: [AppComponent, DfListComponent],
+  declarations: [AppComponent, DfListComponent, DfFormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-
     SharedModuleModule,
   ],
   providers: [],
