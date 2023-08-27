@@ -1,3 +1,89 @@
-<p>
-  df-list works!
-</p>
+<div class="description">
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestiae
+  repudiandae consequuntur repellat voluptate. Consequuntur quibusdam, fugiat
+  atque officiis voluptatum quae. Placeat illo cumque non repellendus
+  voluptatibus odit expedita quas nobis facilis dignissimos perferendis eaque
+  laboriosam impedit optio qui aut alias accusamus, ullam voluptate unde minus
+  modi ad dolor fuga!
+</div>
+
+<div class="card">
+  <div class="header">
+    <div class="card-name">Forms ({{ forms.length }})</div>
+    <div class="card-form form-group">
+      <input
+        class="form-control"
+        type="text"
+        [(ngModel)]="filterForm"
+        placeholder="Seach by Title"
+      />
+      <button type="button" mat-raised-button color="primary">
+        Create Form
+      </button>
+    </div>
+  </div>
+  <div class="body">
+    <div
+      class="list-item"
+      *ngFor="let item of forms | filter : filterForm; let i = index"
+    >
+      <div class="header">
+        <div class="title">{{ item.title }}</div>
+        <div class="update-tiem">
+          Edited: {{ item.lastUpdateTime | date : "dd/MM/yyyy" }}
+        </div>
+      </div>
+      <div class="tail">
+        <div class="status">{{ item.status }}</div>
+        <div class="actions">
+          <button mat-stroked-button>Edit</button>
+          <button mat-stroked-button color="primary">Preview</button>
+          <button mat-stroked-button color="accent">Duplicate</button>
+          <button mat-stroked-button color="warn">Share</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header">
+    <div class="card-name">Master forms ({{ masterForms.length }})</div>
+    <div class="card-form form-group">
+      <input
+        class="form-control"
+        type="text"
+        [(ngModel)]="filterMasterForm"
+        placeholder="Seach by Title"
+      />
+      <button type="button" mat-raised-button color="primary">
+        Create Form
+      </button>
+    </div>
+  </div>
+  <div class="body">
+    <div
+      class="list-item"
+      *ngFor="
+        let item of masterForms | filter : filterMasterForm;
+        let i = index
+      "
+    >
+      <div class="header">
+        <div class="title">{{ item.title }}</div>
+        <div class="update-tiem">
+          Edited: {{ item.lastUpdateTime | date : "dd/MM/yyyy" }}
+        </div>
+      </div>
+      <div class="tail">
+        <div class="status">{{ item.status }}</div>
+        <div class="actions">
+          <button mat-stroked-button>Edit</button>
+          <button mat-stroked-button color="primary">Preview</button>
+          <button mat-stroked-button color="accent">Duplicate</button>
+          <button mat-stroked-button color="warn">Share</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+:host{
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 0 15px;
+  text-transform: capitalize;
+  background-color: rgb(63, 81, 181);
+  .app-name{
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+  }
+}
