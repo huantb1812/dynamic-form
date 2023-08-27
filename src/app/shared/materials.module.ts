@@ -8,7 +8,10 @@ import { MatListModule } from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatRippleModule} from '@angular/material/core';
-
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   imports: [
     CommonModule,
@@ -18,7 +21,11 @@ import {MatRippleModule} from '@angular/material/core';
     MatListModule,
     MatButtonModule,
     MatSidenavModule,
-    MatRippleModule
+    MatRippleModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatSelectModule
   ],
   declarations: [],
   exports: [
@@ -28,7 +35,11 @@ import {MatRippleModule} from '@angular/material/core';
     MatListModule,
     MatButtonModule,
     MatSidenavModule,
-    MatRippleModule
+    MatRippleModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatSelectModule
   ],
 })
 export class MaterialsModule {}

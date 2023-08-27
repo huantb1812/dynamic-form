@@ -43,6 +43,10 @@
   .body {
     min-height: 400px;
     padding: 10px 15px;
+    form{
+      display: flex;
+      flex-direction: column;
+    }
   }
   .footer {
     display: flex;

@@ -12,7 +12,36 @@
   </div>
 </div>
 <div class="body">
-  {{ field | json }}
+  <form>
+    <mat-form-field>
+      <mat-label>Label</mat-label>
+      <input matInput placeholder="" value="" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Property Name</mat-label>
+      <input matInput placeholder="" value="" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Property Type</mat-label>
+      <mat-select>
+        <mat-option value="string">String</mat-option>
+        <mat-option value="boolean">Boolean</mat-option>
+        <mat-option value="options">Options</mat-option>
+        <mat-option value="array">Array</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-checkbox>Required</mat-checkbox>
+    <!-- <mat-form-field>
+      <mat-label></mat-label>
+
+    </mat-form-field> -->
+
+    <!-- <mat-form-field class="example-full-width">
+      <mat-label>Pro</mat-label>
+      <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+    </mat-form-field> -->
+  </form>
+  <!-- {{ field | json }} -->
 </div>
 <div class="footer">
   <button mat-button (click)="onClose()">Cancel</button>
