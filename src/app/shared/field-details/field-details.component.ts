@@ -23,6 +23,7 @@ export class FieldDetailsComponent implements OnInit, OnDestroy {
   propertyTypeControl = new FormControl('', [Validators.required]);
   descriptionControl = new FormControl('', []);
   requiredControl = new FormControl('', []);
+  optionsControl = new FormControl('', []);
   constructor() {}
 
   ngOnInit() {}
