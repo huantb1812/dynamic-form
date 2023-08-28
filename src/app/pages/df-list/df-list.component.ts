@@ -16,7 +16,6 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./df-list.component.scss'],
 })
 export class DfListComponent implements OnInit {
-  dynamicForm$: Observable<DynamicFormState>;
   forms: DynamicForm[] = [];
   filterForm: string = '';
   masterForms: DynamicForm[] = [];
@@ -29,13 +28,8 @@ export class DfListComponent implements OnInit {
     private http: HttpClient,
     private datepipe: DatePipe
   ) {
-    this.dynamicForm$ = this.store.select('dynamicForm');
-    this.http.get('http://localhost:3000/dynamicForms').subscribe((res) => {
-      this.forms = res as DynamicForm[];
-    });
-    this.http.get('http://localhost:3000/masterForms').subscribe((res) => {
-      this.masterForms = res as DynamicForm[];
-    });
+    this.getDynamicForms();
+    this.getMasterForms();
   }
 
   ngOnInit() {}
@@ -48,13 +42,13 @@ export class DfListComponent implements OnInit {
           id: uuidv4(),
           name: result,
           title: result,
-          lastUpdateTime: this.datepipe.transform(new Date, 'dd/MM/yyyy'),
+          lastUpdateTime: this.datepipe.transform(new Date(), 'dd/MM/yyyy'),
           status: 'closed',
         };
         this.http
           .post('http://localhost:3000/dynamicForms', data)
           .subscribe((_) => {
-            this.router.navigateByUrl('/create');
+            this.getDynamicForms();
           });
       }
     });
@@ -70,5 +64,15 @@ export class DfListComponent implements OnInit {
   }
   onShare(id: string) {
     this.router.navigateByUrl('/');
+  }
+  getDynamicForms() {
+    this.http.get('http://localhost:3000/dynamicForms').subscribe((res) => {
+      this.forms = res as DynamicForm[];
+    });
+  }
+  getMasterForms() {
+    this.http.get('http://localhost:3000/masterForms').subscribe((res) => {
+      this.masterForms = res as DynamicForm[];
+    });
   }
 }

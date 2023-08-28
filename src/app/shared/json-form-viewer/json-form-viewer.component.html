@@ -5,7 +5,22 @@
     [renderers]="renderers"
   ></jsonforms> -->
 
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam modi quaerat, tempore praesentium voluptates, nostrum commodi, sapiente adipisci vel rerum quibusdam necessitatibus. Omnis nostrum, doloribus cupiditate quia ipsum at aperiam?
 <div>
-  <ng-content></ng-content>
+  <h1>Schema</h1>
+  <textarea cols="100" rows="10">
+    {{ schema | json }}
+  </textarea>
+</div>
+<div>
+  <h1>UI Schema</h1>
+  <textarea cols="100" rows="10">
+    {{ uischema | json }}
+  </textarea>
+</div>
+
+<div>
+  <h1>Data</h1>
+  <textarea cols="100" rows="10">
+    {{ data | json }}
+  </textarea>
 </div>

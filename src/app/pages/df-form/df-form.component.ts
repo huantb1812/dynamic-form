@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { DynamicForm } from 'src/app/shared';
 import { Field } from 'src/app/shared/models/field';
 import { DynamicFormState } from 'src/app/store/counter/df.reducer';
@@ -13,9 +14,14 @@ import { DynamicFormState } from 'src/app/store/counter/df.reducer';
 export class DfFormComponent implements OnInit {
   showFiller = true;
   currentField?: Field;
-  dynamicForm$: Observable<DynamicFormState>;
-  constructor(private store: Store<{ dynamicForm: DynamicFormState }>) {
-    this.dynamicForm$ = this.store.select('dynamicForm');
+  selected?: DynamicForm;
+  constructor(private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.data
+      .pipe(map((res) => res['dynamicForm']))
+      .subscribe((res) => {
+        debugger;
+        this.selected = res;
+      });
   }
 
   ngOnInit() {}

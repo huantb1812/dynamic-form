@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { DynamicFormState } from 'src/app/store/counter/df.reducer';
@@ -10,9 +10,8 @@ import { DynamicFormState } from 'src/app/store/counter/df.reducer';
 })
 export class HeaderDfFormComponent implements OnInit {
 
-  dynamicForm$: Observable<DynamicFormState>;
-  constructor(private store: Store<{ dynamicForm: DynamicFormState }>) {
-    this.dynamicForm$ = this.store.select('dynamicForm');
+  @Input() title?: string;
+  constructor() {
   }
   ngOnInit() {}
 }
