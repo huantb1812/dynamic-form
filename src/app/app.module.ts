@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DfListComponent } from './pages/df-list/df-list.component';
 import { SharedModuleModule } from './shared/shared-module.module';
 import { DfFormComponent } from './pages/df-form/df-form.component';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [AppComponent, DfListComponent, DfFormComponent],
@@ -16,6 +17,7 @@ import { DfFormComponent } from './pages/df-form/df-form.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModuleModule,
+    StoreModule.forRoot({}, {}),
   ],
   providers: [],
   bootstrap: [AppComponent],
