@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import { DynamicForm } from 'src/app/shared';
 import { Dialog, DialogModule, DialogRef } from '@angular/cdk/dialog';
 import { DialogInitANewDfComponent } from 'src/app/shared/dialog-init-a-new-df/dialog-init-a-new-df.component';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { initNewDfForm } from 'src/app/store/counter/df.actions';
+import { DynamicFormState } from 'src/app/store/counter/df.reducer';
 
 @Component({
   selector: 'app-df-list',
@@ -10,6 +14,7 @@ import { DialogInitANewDfComponent } from 'src/app/shared/dialog-init-a-new-df/d
   styleUrls: ['./df-list.component.scss'],
 })
 export class DfListComponent implements OnInit {
+  count$: Observable<DynamicFormState>;
   forms: DynamicForm[] = [
     {
       id: '1',
@@ -41,14 +46,24 @@ export class DfListComponent implements OnInit {
   ];
   filterMasterForm: string = '';
 
-  constructor(private router: Router, public dialog: Dialog) {}
+  constructor(
+    private router: Router,
+    public dialog: Dialog,
+    private store: Store<{ dynamicForm: DynamicFormState }>
+  ) {
+    this.count$ = this.store.select('dynamicForm');
+  }
 
   ngOnInit() {}
   onCreateForm() {
     const creationDialog = this.dialog.open<string>(DialogInitANewDfComponent);
-    creationDialog.closed.subscribe((result) => {
-      console.log('form name:', result);
-      this.router.navigateByUrl('/create');
+
+    creationDialog.closed.subscribe((result?: string) => {
+      if (result != null) {
+        this.store.dispatch(initNewDfForm({ name: result }));
+        console.log('form name:', result);
+        this.router.navigateByUrl('/create');
+      }
     });
   }
   onEdit(id: string) {
