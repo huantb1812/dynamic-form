@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DynamicForm } from 'src/app/shared';
-import { Dialog, DialogModule, DialogRef } from '@angular/cdk/dialog';
+import { Dialog } from '@angular/cdk/dialog';
 import { DialogInitANewDfComponent } from 'src/app/shared/dialog-init-a-new-df/dialog-init-a-new-df.component';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { initNewDfForm } from 'src/app/store/counter/df.actions';
 import { DynamicFormState } from 'src/app/store/counter/df.reducer';
 import { HttpClient } from '@angular/common/http';
 import { v4 as uuidv4 } from 'uuid';
@@ -48,6 +47,7 @@ export class DfListComponent implements OnInit {
         const data = {
           id: uuidv4(),
           name: result,
+          title: result,
           lastUpdateTime: this.datepipe.transform(new Date, 'dd/MM/yyyy'),
           status: 'closed',
         };
