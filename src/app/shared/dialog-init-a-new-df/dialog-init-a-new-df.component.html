@@ -1,0 +1,25 @@
+<form>
+  <mat-form-field class="full-width">
+    <mat-label>Form Name</mat-label>
+    <input
+      type="text"
+      matInput
+      [formControl]="formNameControl"
+      placeholder="..."
+    />
+    <mat-error *ngIf="formNameControl.hasError('required')">
+      Name is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+</form>
+<hr />
+
+<div class="actions">
+  <button type="button" mat-stroked-button (click)="dialogRef.close()">
+    Close
+  </button>
+  <button type="button" mat-raised-button color="primary" (click)="onSave()">
+    Next
+  </button>
+
+</div>

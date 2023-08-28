@@ -3,20 +3,29 @@ import { CommonModule } from '@angular/common';
 import { MaterialsModule } from './materials.module';
 import { HeaderPageComponent } from './header-page/header-page.component';
 import { FilterPipe } from './pipes/filter.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderDfFormComponent } from './header-df-form/header-df-form.component';
-import { FieldsComponent } from './fields/fields.component';
+import { FieldsComponent } from './fields-layouts/fields.component';
 import { JsonFormViewerModule } from './json-form-viewer/json-form-viewer.module';
 import { FieldDetailsComponent } from './field-details/field-details.component';
-
+import { DialogModule } from '@angular/cdk/dialog';
+import { DialogInitANewDfComponent } from './dialog-init-a-new-df/dialog-init-a-new-df.component';
 @NgModule({
-  imports: [CommonModule, MaterialsModule, FormsModule,JsonFormViewerModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MaterialsModule,
+    FormsModule,
+    JsonFormViewerModule,
+    DialogModule,
+  ],
   declarations: [
     HeaderPageComponent,
     FilterPipe,
     HeaderDfFormComponent,
     FieldsComponent,
-    FieldDetailsComponent
+    FieldDetailsComponent,
+    DialogInitANewDfComponent,
   ],
   exports: [
     MaterialsModule,
@@ -26,7 +35,9 @@ import { FieldDetailsComponent } from './field-details/field-details.component';
     HeaderDfFormComponent,
     FieldsComponent,
     JsonFormViewerModule,
-    FieldDetailsComponent
+    FieldDetailsComponent,
+    DialogModule,
+    DialogInitANewDfComponent,
   ],
 })
 export class SharedModuleModule {}

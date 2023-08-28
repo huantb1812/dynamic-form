@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DynamicForm } from 'src/app/shared';
+import { Dialog, DialogModule, DialogRef } from '@angular/cdk/dialog';
+import { DialogInitANewDfComponent } from 'src/app/shared/dialog-init-a-new-df/dialog-init-a-new-df.component';
 
 @Component({
   selector: 'app-df-list',
@@ -39,11 +41,15 @@ export class DfListComponent implements OnInit {
   ];
   filterMasterForm: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, public dialog: Dialog) {}
 
   ngOnInit() {}
   onCreateForm() {
-    this.router.navigateByUrl('/create');
+    const creationDialog = this.dialog.open<string>(DialogInitANewDfComponent);
+    creationDialog.closed.subscribe((result) => {
+      console.log('form name:', result);
+      this.router.navigateByUrl('/create');
+    });
   }
   onEdit(id: string) {
     this.router.navigateByUrl('/edit/' + id);
