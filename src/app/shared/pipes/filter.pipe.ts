@@ -12,6 +12,6 @@ export class FilterPipe implements PipeTransform {
 
   transform(items: DynamicForm[], term: string): DynamicForm[] {
     // I am unsure what id is here. did you mean title?
-    return items.filter((item) => item.title.indexOf(term) !== -1);
+    return items.filter((item) => item.title.toLowerCase().indexOf(term.toLowerCase()) !== -1);
   }
 }
