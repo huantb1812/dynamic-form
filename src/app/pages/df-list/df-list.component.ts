@@ -8,6 +8,8 @@ import { Store } from '@ngrx/store';
 import { initNewDfForm } from 'src/app/store/counter/df.actions';
 import { DynamicFormState } from 'src/app/store/counter/df.reducer';
 import { HttpClient } from '@angular/common/http';
+import { v4 as uuidv4 } from 'uuid';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-df-list',
@@ -25,7 +27,8 @@ export class DfListComponent implements OnInit {
     private router: Router,
     public dialog: Dialog,
     private store: Store<{ dynamicForm: DynamicFormState }>,
-    private http: HttpClient
+    private http: HttpClient,
+    private datepipe: DatePipe
   ) {
     this.dynamicForm$ = this.store.select('dynamicForm');
     this.http.get('http://localhost:3000/dynamicForms').subscribe((res) => {
@@ -42,9 +45,17 @@ export class DfListComponent implements OnInit {
 
     creationDialog.closed.subscribe((result?: string) => {
       if (result != null) {
-        this.store.dispatch(initNewDfForm({ name: result }));
-        console.log('form name:', result);
-        this.router.navigateByUrl('/create');
+        const data = {
+          id: uuidv4(),
+          name: result,
+          lastUpdateTime: this.datepipe.transform(new Date, 'dd/MM/yyyy'),
+          status: 'closed',
+        };
+        this.http
+          .post('http://localhost:3000/dynamicForms', data)
+          .subscribe((_) => {
+            this.router.navigateByUrl('/create');
+          });
       }
     });
   }
