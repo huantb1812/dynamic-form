@@ -11,6 +11,7 @@ import { DfFormComponent } from './pages/df-form/df-form.component';
 import { StoreModule } from '@ngrx/store';
 import { dynamicFormReducer } from './store/counter/df.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, DfListComponent, DfFormComponent],
@@ -18,6 +19,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     SharedModuleModule,
     StoreModule.forRoot({}, {}),
     // StoreModule.forRoot({ dynamicForm: dynamicFormReducer }),

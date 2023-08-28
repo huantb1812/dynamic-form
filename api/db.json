@@ -1,0 +1,33 @@
+{
+  "dynamicForms": [
+    {
+      "id": 1,
+      "name": "FC Barcelona",
+      "title": "FC Barcelona",
+      "lastUpdateTime": "01/09/2023",
+      "status": "closed"
+    },
+    {
+      "id": 2,
+      "name": "Real Madrid",
+      "title": "Real Madrid",
+      "lastUpdateTime": "03/09/2023",
+      "status": "open"
+    }
+  ],
+
+  "masterForms": [
+    {
+      "id": 3,
+      "title": "FC Barcelona",
+      "lastUpdateTime": "01/09/2023",
+      "status": "closed"
+    },
+    {
+      "id": 4,
+      "title": "Real Madrid",
+      "lastUpdateTime": "03/09/2023",
+      "status": "open"
+    }
+  ]
+}

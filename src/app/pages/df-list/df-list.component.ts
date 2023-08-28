@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { initNewDfForm } from 'src/app/store/counter/df.actions';
 import { DynamicFormState } from 'src/app/store/counter/df.reducer';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-df-list',
@@ -14,44 +15,25 @@ import { DynamicFormState } from 'src/app/store/counter/df.reducer';
   styleUrls: ['./df-list.component.scss'],
 })
 export class DfListComponent implements OnInit {
-  count$: Observable<DynamicFormState>;
-  forms: DynamicForm[] = [
-    {
-      id: '1',
-      title: 'Dynamic form 001',
-      lastUpdateTime: new Date(2023, 8, 1),
-      status: 'closed',
-    },
-    {
-      id: '2',
-      title: 'Dynamic form 002',
-      lastUpdateTime: new Date(2023, 8, 2),
-      status: 'opened',
-    },
-  ];
+  dynamicForm$: Observable<DynamicFormState>;
+  forms: DynamicForm[] = [];
   filterForm: string = '';
-  masterForms: DynamicForm[] = [
-    {
-      id: '3',
-      title: 'Master form 001',
-      lastUpdateTime: new Date(2023, 8, 1),
-      status: 'closed',
-    },
-    {
-      id: '4',
-      title: 'Master form 002',
-      lastUpdateTime: new Date(2023, 8, 2),
-      status: 'opened',
-    },
-  ];
+  masterForms: DynamicForm[] = [];
   filterMasterForm: string = '';
 
   constructor(
     private router: Router,
     public dialog: Dialog,
-    private store: Store<{ dynamicForm: DynamicFormState }>
+    private store: Store<{ dynamicForm: DynamicFormState }>,
+    private http: HttpClient
   ) {
-    this.count$ = this.store.select('dynamicForm');
+    this.dynamicForm$ = this.store.select('dynamicForm');
+    this.http.get('http://localhost:3000/dynamicForms').subscribe((res) => {
+      this.forms = res as DynamicForm[];
+    });
+    this.http.get('http://localhost:3000/masterForms').subscribe((res) => {
+      this.masterForms = res as DynamicForm[];
+    });
   }
 
   ngOnInit() {}
