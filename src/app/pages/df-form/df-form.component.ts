@@ -19,7 +19,6 @@ export class DfFormComponent implements OnInit {
     this.activatedRoute.data
       .pipe(map((res) => res['dynamicForm']))
       .subscribe((res) => {
-        debugger;
         this.selected = res;
       });
   }
@@ -27,5 +26,14 @@ export class DfFormComponent implements OnInit {
   ngOnInit() {}
   onChangeField(field: Field) {
     this.currentField = field;
+  }
+  onClose(field: Field) {
+    debugger;
+    if (field) {
+      console.log(field);
+      this.currentField = undefined;
+    } else {
+      this.currentField = undefined;
+    }
   }
 }

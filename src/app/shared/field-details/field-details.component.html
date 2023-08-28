@@ -15,22 +15,26 @@
   <form>
     <mat-form-field>
       <mat-label>Label</mat-label>
-      <input matInput placeholder="" value="" />
+      <input matInput  [formControl]="labelControl" />
     </mat-form-field>
     <mat-form-field>
       <mat-label>Property Name</mat-label>
-      <input matInput placeholder="" value="" />
+      <input matInput  [formControl]="propertyNameControl" />
     </mat-form-field>
     <mat-form-field>
       <mat-label>Property Type</mat-label>
-      <mat-select>
+      <mat-select [formControl]="propertyTypeControl">
         <mat-option value="string">String</mat-option>
         <mat-option value="boolean">Boolean</mat-option>
         <mat-option value="options">Options</mat-option>
         <mat-option value="array">Array</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-checkbox>Required</mat-checkbox>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input matInput  [formControl]="descriptionControl" />
+    </mat-form-field>
+    <mat-checkbox [formControl]="requiredControl">Required</mat-checkbox>
     <!-- <mat-form-field>
       <mat-label></mat-label>
 
@@ -45,7 +49,7 @@
 </div>
 <div class="footer">
   <button mat-button (click)="onClose()">Cancel</button>
-  <button mat-raised-button color="primary" (click)="onClose()">
+  <button mat-raised-button color="primary" (click)="onCreateField()">
     Create Field
   </button>
 </div>

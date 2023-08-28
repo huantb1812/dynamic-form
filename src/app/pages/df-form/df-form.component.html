@@ -5,7 +5,7 @@
     <app-field-details
       *ngIf="currentField"
       [field]="currentField"
-      (close)="currentField = undefined"
+      (close)="onClose($event)"
     >
     </app-field-details>
   </mat-drawer>
@@ -17,10 +17,5 @@
       [data]="selected?.data"
     >
     </app-json-form-viewer>
-    <!-- <div>
-      <button type="button" mat-button (click)="drawer.toggle()">
-        Toggle sidenav
-      </button>
-    </div> -->
   </div>
 </mat-drawer-container>

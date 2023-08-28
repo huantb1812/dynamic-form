@@ -4,23 +4,29 @@
     [uischema]="uischema"
     [renderers]="renderers"
   ></jsonforms> -->
-
-<div>
-  <h1>Schema</h1>
-  <textarea cols="100" rows="10">
+<mat-tab-group>
+  <mat-tab label="Schema">
+    <code>
+      <pre>
     {{ schema | json }}
-  </textarea>
-</div>
-<div>
-  <h1>UI Schema</h1>
-  <textarea cols="100" rows="10">
-    {{ uischema | json }}
-  </textarea>
-</div>
-
-<div>
-  <h1>Data</h1>
-  <textarea cols="100" rows="10">
-    {{ data | json }}
-  </textarea>
-</div>
+  </pre
+      >
+    </code>
+  </mat-tab>
+  <mat-tab label="UI Schema">
+    <code>
+      <pre>
+      {{ uischema | json }}
+</pre
+      >
+    </code>
+  </mat-tab>
+  <mat-tab label="Data">
+    <code>
+      <pre>
+      {{ data | json }}
+</pre
+      >
+    </code>
+  </mat-tab>
+</mat-tab-group>

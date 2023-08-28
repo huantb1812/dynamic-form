@@ -10,6 +10,7 @@ import { JsonFormViewerModule } from './json-form-viewer/json-form-viewer.module
 import { FieldDetailsComponent } from './field-details/field-details.component';
 import { DialogModule } from '@angular/cdk/dialog';
 import { DialogInitANewDfComponent } from './dialog-init-a-new-df/dialog-init-a-new-df.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -38,6 +39,7 @@ import { DialogInitANewDfComponent } from './dialog-init-a-new-df/dialog-init-a-
     FieldDetailsComponent,
     DialogModule,
     DialogInitANewDfComponent,
+    DialogModule,
   ],
 })
 export class SharedModuleModule {}
