@@ -1,9 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
 import { DynamicForm } from 'src/app/shared';
 import { Field } from 'src/app/shared/models/field';
+import { Property } from 'src/app/shared/models/property';
 import { DynamicFormState } from 'src/app/store/counter/df.reducer';
 
 @Component({
@@ -15,7 +17,10 @@ export class DfFormComponent implements OnInit {
   showFiller = true;
   currentField?: Field;
   selected?: DynamicForm;
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private http: HttpClient
+  ) {
     this.activatedRoute.data
       .pipe(map((res) => res['dynamicForm']))
       .subscribe((res) => {
@@ -27,13 +32,46 @@ export class DfFormComponent implements OnInit {
   onChangeField(field: Field) {
     this.currentField = field;
   }
-  onClose(field: Field) {
-    debugger;
-    if (field) {
-      console.log(field);
+  onClose(property: Property) {
+    if (property && this.selected) {
+      this.generateProperty(property);
+      this.generateElement(property);
+      this.http
+        .put(
+          'http://localhost:3000/dynamicForms/' + this.selected.id,
+          this.selected
+        )
+        .subscribe((res) => {});
+      console.log(property);
       this.currentField = undefined;
     } else {
       this.currentField = undefined;
+    }
+  }
+  generateProperty(property: Property) {
+    if (this.selected) {
+      var props = {
+        type: property.type,
+        description: property.description,
+        // default:
+        // maximum:
+        // minimum
+        //
+      };
+      this.selected.schema.properties[property.name] = props;
+    }
+  }
+  generateElement(property: Property) {
+    if (this.selected) {
+      var element = {
+        type: 'Control',
+        scope: `#/properties/${property.name}`,
+        // default:
+        // maximum:
+        // minimum
+        //
+      };
+      this.selected.uischema.elements.push(element);
     }
   }
 }

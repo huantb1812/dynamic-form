@@ -65,7 +65,14 @@
           },
           "nationality": {
             "type": "string",
-            "enum": ["DE", "IT", "JP", "US", "RU", "Other"]
+            "enum": [
+              "DE",
+              "IT",
+              "JP",
+              "US",
+              "RU",
+              "Other"
+            ]
           },
           "personalData": {
             "type": "object",
@@ -84,7 +91,10 @@
                 "default": 7
               }
             },
-            "required": ["age", "height"]
+            "required": [
+              "age",
+              "height"
+            ]
           },
           "occupation": {
             "type": "string"
@@ -94,7 +104,10 @@
             "maxLength": 5
           }
         },
-        "required": ["occupation", "nationality"]
+        "required": [
+          "occupation",
+          "nationality"
+        ]
       },
       "uischema": {
         "type": "VerticalLayout",
@@ -174,11 +187,39 @@
       "status": "closed"
     },
     {
-      "id": "f839b659-65ed-4ccc-a444-07a982c0032d",
-      "name": "dfidushfishdfdsu",
-      "title": "dfidushfishdfdsu",
+      "id": "042ee10a-4201-41c3-9596-64f4cec274ee",
+      "name": "C1",
+      "title": "C1",
       "lastUpdateTime": "29/08/2023",
-      "status": "closed"
+      "status": "closed",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Enter full name"
+          },
+          "description": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": []
+      },
+      "uischema": {
+        "type": "VerticalLayout",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/name"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/description"
+          }
+        ]
+      },
+      "data": {}
     }
   ],
   "masterForms": [

@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { DynamicForm } from '../models';
 import { Field } from '../models/field';
 import { FormControl, Validators } from '@angular/forms';
@@ -22,21 +29,21 @@ export class FieldDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.field = undefined;
   }
-  onClose(){
-    this.field= undefined;
+  onClose() {
+    this.field = undefined;
     this.close.emit();
   }
-  onCreateField(){
-    if(this.labelControl.invalid||this.propertyNameControl.invalid){
+  onCreateField() {
+    if (this.labelControl.invalid || this.propertyNameControl.invalid) {
       return;
     }
     this.close.emit({
       lable: this.labelControl.value,
-      propertyName: this.propertyNameControl.value,
-      propertyType: this.propertyTypeControl.value,
+      name: this.propertyNameControl.value,
+      type: this.propertyTypeControl.value,
       description: this.descriptionControl.value,
-      requiredControl: this.requiredControl.value,
+      required: this.requiredControl.value,
     });
-    this.field= undefined;
+    this.field = undefined;
   }
 }

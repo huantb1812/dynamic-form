@@ -44,6 +44,16 @@ export class DfListComponent implements OnInit {
           title: result,
           lastUpdateTime: this.datepipe.transform(new Date(), 'dd/MM/yyyy'),
           status: 'closed',
+          schema: {
+            type: 'object',
+            properties: {},
+            required: [],
+          },
+          uischema: {
+            type: 'VerticalLayout',
+            elements: [],
+          },
+          data: {},
         };
         this.http
           .post('http://localhost:3000/dynamicForms', data)

@@ -4,7 +4,7 @@ export interface DynamicForm {
   title: string;
   lastUpdateTime: Date;
   status: string;
-  schema: string;
-  uischema: string;
+  schema: any;
+  uischema: any;
   data: string;
 }
