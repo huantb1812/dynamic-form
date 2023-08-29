@@ -54,11 +54,12 @@ import { JsonFormsAngularService, JsonFormsControl } from '../../jsonforms-ng';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DateControlRenderer extends JsonFormsControl {
+  focused:boolean;
   constructor(jsonformsService: JsonFormsAngularService) {
     super(jsonformsService);
   }
 
-  getEventValue = (event: any) => event.value.toISOString().substr(0, 10);
+  override getEventValue = (event: any) => event.value.toISOString().substr(0, 10);
 }
 
 export const DateControlRendererTester: RankedTester = rankWith(

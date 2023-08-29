@@ -108,13 +108,13 @@ export class AutocompleteControlRenderer
   @Input() options: string[];
   filteredOptions: Observable<string[]>;
   shouldFilter: boolean;
-
+  focused: boolean;
   constructor(jsonformsService: JsonFormsAngularService) {
     super(jsonformsService);
   }
-  getEventValue = (event: any) => event.target.value;
+  override getEventValue = (event: any) => event.target.value;
 
-  ngOnInit() {
+  override ngOnInit() {
     super.ngOnInit();
     this.shouldFilter = false;
     this.filteredOptions = this.form.valueChanges.pipe(
@@ -149,7 +149,7 @@ export class AutocompleteControlRenderer
         option.toLowerCase().indexOf(val.toLowerCase()) === 0
     );
   }
-  protected getOwnProps(): OwnPropsOfAutoComplete {
+  protected override getOwnProps(): OwnPropsOfAutoComplete {
     return {
       ...super.getOwnProps(),
       options: this.options,

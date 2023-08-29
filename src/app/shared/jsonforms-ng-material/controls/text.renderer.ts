@@ -49,13 +49,14 @@ import { isStringControl, RankedTester, rankWith } from '../../jsonforms-core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextControlRenderer extends JsonFormsControl {
+  focused:boolean;
   constructor(jsonformsService: JsonFormsAngularService) {
     super(jsonformsService);
   }
-  getEventValue = (event: any) => event.target.value || undefined;
+  override getEventValue = (event: any) => event.target.value || undefined;
   getType = (): string => {
-    if (this.uischema.options && this.uischema.options.format) {
-      return this.uischema.options.format;
+    if (this.uischema.options && this.uischema.options['format']) {
+      return this.uischema.options['format'];
     }
     if (this.scopedSchema && this.scopedSchema.format) {
       switch (this.scopedSchema.format) {

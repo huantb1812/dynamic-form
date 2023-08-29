@@ -69,12 +69,12 @@ export class NumberControlRenderer extends JsonFormsControl {
   locale: string;
   numberFormat: Intl.NumberFormat;
   decimalSeparator: string;
-
+  focused:boolean;
   constructor(jsonformsService: JsonFormsAngularService) {
     super(jsonformsService);
   }
 
-  onChange(ev: any) {
+  override onChange(ev: any) {
     const data = this.oldValue
       ? ev.target.value.replace(this.oldValue, '')
       : ev.target.value;
@@ -100,7 +100,7 @@ export class NumberControlRenderer extends JsonFormsControl {
     this.oldValue = this.getValue();
   }
 
-  getEventValue = (event: any) => {
+  override getEventValue = (event: any) => {
     const cleanPattern = new RegExp(`[^-+0-9${this.decimalSeparator}]`, 'g');
     const cleaned = event.target.value.replace(cleanPattern, '');
     const normalized = cleaned.replace(this.decimalSeparator, '.');
@@ -128,7 +128,7 @@ export class NumberControlRenderer extends JsonFormsControl {
     return '';
   };
 
-  mapAdditionalProps(props: StatePropsOfControl) {
+  override mapAdditionalProps(props: StatePropsOfControl) {
     if (this.scopedSchema) {
       const testerContext = {
         rootSchema: this.rootSchema,

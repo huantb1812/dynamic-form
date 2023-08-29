@@ -199,7 +199,7 @@ export class ArrayLayoutRenderer
     this.moveItemDown = moveDown;
     this.removeItems = removeItems;
   }
-  mapAdditionalProps(props: ArrayLayoutProps) {
+  override mapAdditionalProps(props: ArrayLayoutProps) {
     this.translations = props.translations;
     this.noData = !props.data || props.data === 0;
     this.uischemas = props.uischemas;

@@ -48,10 +48,11 @@ import { isMultiLineControl, RankedTester, rankWith } from '../../jsonforms-core
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextAreaRenderer extends JsonFormsControl {
+  focused:boolean;
   constructor(jsonformsService: JsonFormsAngularService) {
     super(jsonformsService);
   }
-  getEventValue = (event: any) => event.target.value || undefined;
+  override getEventValue = (event: any) => event.target.value || undefined;
 }
 export const TextAreaRendererTester: RankedTester = rankWith(
   2,

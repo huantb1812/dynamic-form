@@ -269,7 +269,7 @@ export class MasterListComponent
     this.removeItems(this.propsPath, [item])();
   }
 
-  protected mapToProps(state: JsonFormsState): StatePropsOfArrayControl {
+  protected override mapToProps(state: JsonFormsState): StatePropsOfArrayControl {
     const props = mapStateToArrayControlProps(state, this.getOwnProps());
     return { ...props };
   }

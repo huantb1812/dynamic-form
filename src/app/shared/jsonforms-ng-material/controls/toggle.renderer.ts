@@ -27,7 +27,7 @@ import {
   Component,
   ChangeDetectorRef,
 } from '@angular/core';
-import { JsonFormsAngularService, JsonFormsControl } from '@jsonforms/angular';
+import { JsonFormsAngularService, JsonFormsControl } from '../../jsonforms-ng';
 import {
   and,
   isBooleanControl,
@@ -64,8 +64,8 @@ export class ToggleControlRenderer extends JsonFormsControl {
     super(jsonformsService);
   }
   isChecked = () => this.data || false;
-  getEventValue = (event: any) => event.checked;
-  mapAdditionalProps() {
+  override getEventValue = (event: any) => event.checked;
+  override mapAdditionalProps() {
     this.changeDetectorRef.markForCheck();
   }
 }
