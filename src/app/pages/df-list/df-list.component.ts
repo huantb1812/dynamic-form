@@ -75,6 +75,13 @@ export class DfListComponent implements OnInit {
   onShare(id: string) {
     this.router.navigateByUrl('/');
   }
+  onDelete(id: string) {
+    this.http
+    .delete('http://localhost:3000/dynamicForms/'+id)
+    .subscribe((_) => {
+      this.getDynamicForms();
+    });
+  }
   getDynamicForms() {
     this.http.get('http://localhost:3000/dynamicForms').subscribe((res) => {
       this.forms = res as DynamicForm[];
