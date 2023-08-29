@@ -98,7 +98,7 @@ export class JsonForms implements DoCheck, OnChanges, OnInit {
         this.dataChange.emit(data);
       }
       if (this.previousErrors !== errors) {
-        this.previousErrors = errors;
+        this.previousErrors = errors || [];
         this.errors.emit(errors);
       }
     });
@@ -114,19 +114,19 @@ export class JsonForms implements DoCheck, OnChanges, OnInit {
       this.oldI18N?.translate !== this.i18n?.translate ||
       this.oldI18N?.translateError !== this.i18n?.translateError
     ) {
-      this.jsonformsService.updateI18n(
-        Actions.updateI18n(
-          this.oldI18N?.locale === this.i18n?.locale
-            ? this.jsonformsService.getState().jsonforms.i18n.locale
-            : this.i18n?.locale,
-          this.oldI18N?.translate === this.i18n?.translate
-            ? this.jsonformsService.getState().jsonforms.i18n.translate
-            : this.i18n?.translate,
-          this.oldI18N?.translateError === this.i18n?.translateError
-            ? this.jsonformsService.getState().jsonforms.i18n.translateError
-            : this.i18n?.translateError
-        )
-      );
+      // this.jsonformsService.updateI18n(
+      //   Actions.updateI18n(
+      //     this.oldI18N?.locale === this.i18n?.locale
+      //       ? this.jsonformsService.getState().jsonforms.i18n.locale
+      //       : this.i18n?.locale,
+      //     this.oldI18N?.translate === this.i18n?.translate
+      //       ? this.jsonformsService.getState().jsonforms.i18n.translate
+      //       : this.i18n?.translate,
+      //     this.oldI18N?.translateError === this.i18n?.translateError
+      //       ? this.jsonformsService.getState().jsonforms.i18n.translateError
+      //       : this.i18n?.translateError
+      //   )
+      // );
       this.oldI18N = this.i18n;
     }
   }
@@ -135,17 +135,17 @@ export class JsonForms implements DoCheck, OnChanges, OnInit {
     if (!this.initialized) {
       return;
     }
-    const newData = changes.data;
-    const newSchema = changes.schema;
-    const newUiSchema = changes.uischema;
-    const newRenderers = changes.renderers;
-    const newUischemas = changes.uischemas;
-    const newI18n = changes.i18n;
-    const newReadonly = changes.readonly;
-    const newValidationMode = changes.validationMode;
-    const newAjv = changes.ajv;
-    const newConfig = changes.config;
-    const newAdditionalErrors = changes.additionalErrors;
+    const newData = changes['data'];
+    const newSchema = changes['schema'];
+    const newUiSchema = changes['uischema'];
+    const newRenderers = changes['renderers'];
+    const newUischemas = changes['uischemas'];
+    const newI18n = changes['i18n'];
+    const newReadonly = changes['readonly'];
+    const newValidationMode = changes['validationMode'];
+    const newAjv = changes['ajv'];
+    const newConfig = changes['config'];
+    const newAdditionalErrors = changes['additionalErrors'];
 
     if (
       newData ||

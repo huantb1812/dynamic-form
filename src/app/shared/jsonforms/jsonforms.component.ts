@@ -86,9 +86,14 @@ export class JsonFormsOutlet
 
   @Input()
   set renderProps(renderProps: OwnPropsOfRenderer) {
-    this.path = renderProps.path;
-    this.schema = renderProps.schema;
-    this.uischema = renderProps.uischema;
+
+    this.path = renderProps.path||'';
+    if(renderProps.schema){
+      this.schema = renderProps.schema;
+    }
+    if(renderProps.uischema){
+      this.uischema = renderProps.uischema;
+    }
     this.update(this.jsonformsService.getState());
   }
 
@@ -143,10 +148,10 @@ export class JsonFormsOutlet
       if (instance instanceof JsonFormsControl) {
         const controlInstance = instance as JsonFormsControl;
         if (controlInstance.id === undefined) {
-          const id = isControl(props.uischema)
-            ? createId(props.uischema.scope)
-            : undefined;
-          (instance as JsonFormsControl).id = id;
+          const id = isControl(props.uischema) ? createId(props.uischema.scope) : undefined;
+          if(id){
+            (instance as JsonFormsControl).id = id;
+          }
         }
       }
     }

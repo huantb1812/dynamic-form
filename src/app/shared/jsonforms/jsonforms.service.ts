@@ -61,8 +61,8 @@ export class JsonFormsAngularService {
     initialState: JsonFormsSubStates = {
       core: {
         data: undefined,
-        schema: undefined,
-        uischema: undefined,
+        schema: {} as JsonSchema,
+        uischema: {} as UISchemaElement,
         validationMode: 'ValidateAndShow',
         additionalErrors: undefined,
       },
@@ -82,10 +82,10 @@ export class JsonFormsAngularService {
       )
     );
     this.state = new BehaviorSubject({ jsonforms: this._state });
-    const data = initialState.core.data;
-    const schema = initialState.core.schema ?? generateJsonSchema(data);
+    const data = initialState.core?.data;
+    const schema = initialState.core?.schema ?? generateJsonSchema(data);
     const uischema =
-      initialState.core.uischema ?? generateDefaultUISchema(schema);
+      initialState.core?.uischema ?? generateDefaultUISchema(schema);
     this.updateCore(Actions.init(data, schema, uischema));
   }
 
@@ -109,6 +109,9 @@ export class JsonFormsAngularService {
     renderer: JsonFormsBaseRenderer<UISchemaElement>,
     tester: RankedTester
   ): void {
+    if (this._state.renderers === undefined) {
+      this._state.renderers = [];
+    }
     this._state.renderers.push({ renderer, tester });
     this.updateSubject();
   }
@@ -131,6 +134,9 @@ export class JsonFormsAngularService {
     this.removeRenderer(tester);
   }
   removeRenderer(tester: RankedTester): void {
+    if (this._state.renderers === undefined) {
+      this._state.renderers = [];
+    }
     const findIndex = this._state.renderers.findIndex(
       (v) => v.tester === tester
     );
@@ -195,51 +201,58 @@ export class JsonFormsAngularService {
     this.updateSubject();
     return setConfigAction;
   }
-
+  //todo
   setUiSchema(uischema: UISchemaElement | undefined): void {
-    const newUiSchema =
-      uischema ?? generateDefaultUISchema(this._state.core.schema);
-    const coreState = coreReducer(
-      this._state.core,
-      Actions.updateCore(
-        this._state.core.data,
-        this._state.core.schema,
-        newUiSchema
-      )
-    );
-    if (coreState !== this._state.core) {
-      this._state.core = coreState;
-      this.updateSubject();
+    if (this._state.core) {
+      const newUiSchema =
+        uischema ?? generateDefaultUISchema(this._state.core.schema);
+      const coreState = coreReducer(
+        this._state.core,
+        Actions.updateCore(
+          this._state.core.data,
+          this._state.core.schema,
+          newUiSchema
+        )
+      );
+      if (coreState !== this._state.core) {
+        this._state.core = coreState;
+        this.updateSubject();
+      }
     }
   }
-
+  //todo
   setSchema(schema: JsonSchema | undefined): void {
-    const coreState = coreReducer(
-      this._state.core,
-      Actions.updateCore(
-        this._state.core.data,
-        schema ?? generateJsonSchema(this._state.core.data),
-        this._state.core.uischema
-      )
-    );
-    if (coreState !== this._state.core) {
-      this._state.core = coreState;
-      this.updateSubject();
+    if (this._state.core) {
+      const coreState = coreReducer(
+        this._state.core,
+        Actions.updateCore(
+          this._state.core.data,
+          schema ?? generateJsonSchema(this._state.core.data),
+          this._state.core.uischema
+        )
+      );
+      if (coreState !== this._state.core) {
+        this._state.core = coreState;
+        this.updateSubject();
+      }
     }
   }
-
+  //todo
   setData(data: any): void {
-    const coreState = coreReducer(
-      this._state.core,
-      Actions.updateCore(
-        data,
-        this._state.core.schema,
-        this._state.core.uischema
-      )
-    );
-    if (coreState !== this._state.core) {
-      this._state.core = coreState;
-      this.updateSubject();
+    if (this._state.core) {
+      const coreState = coreReducer(
+        this._state.core,
+        Actions.updateCore(
+          data,
+          this._state.core.schema,
+          this._state.core.uischema
+        )
+      );
+      if (coreState !== this._state.core) {
+        this._state.core = coreState;
+        this.updateSubject();
+      }
+
     }
   }
 
@@ -248,8 +261,8 @@ export class JsonFormsAngularService {
   }
 
   setLocale(locale: string): void {
-    this._state.i18n.locale = locale;
-    this.updateSubject();
+    // this._state.i18n.locale = locale;
+    // this.updateSubject();
   }
 
   setReadonly(readonly: boolean): void {
@@ -277,23 +290,39 @@ export class JsonFormsAngularService {
     validationMode: ValidationMode | typeof USE_STATE_VALUE,
     additionalErrors: ErrorObject[] | typeof USE_STATE_VALUE
   ): void {
-    const newData = data === USE_STATE_VALUE ? this._state.core.data : data;
-    const newSchema =
-      schema === USE_STATE_VALUE
-        ? this._state.core.schema
-        : schema ?? generateJsonSchema(newData);
-    const newUischema =
+    // let newData = data === USE_STATE_VALUE ? this._state.core?.data : data;
+
+    let newData = undefined;
+    if (data === USE_STATE_VALUE) {
+      newData = this._state.core?.data;
+    } else {
+      newData = data;
+    }
+
+    // let newSchema = schema === USE_STATE_VALUE ? this._state.core?.schema  : schema ?? generateJsonSchema(newData);
+    let newSchema = undefined;
+    if (schema === USE_STATE_VALUE) {
+      newSchema = this._state.core?.schema;
+    } else {
+      newSchema = schema;
+    }
+
+    if (newSchema === undefined) {
+      newSchema = generateJsonSchema(newData);
+    }
+
+    let newUischema =
       uischema === USE_STATE_VALUE
-        ? this._state.core.uischema
+        ? this._state.core?.uischema
         : uischema ?? generateDefaultUISchema(newSchema);
-    const newAjv = ajv === USE_STATE_VALUE ? this._state.core.ajv : ajv;
-    const newValidationMode =
+    let newAjv = ajv === USE_STATE_VALUE ? this._state.core?.ajv : ajv;
+    let newValidationMode =
       validationMode === USE_STATE_VALUE
-        ? this._state.core.validationMode
+        ? this._state.core?.validationMode
         : validationMode;
-    const newAdditionalErrors =
+    let newAdditionalErrors =
       additionalErrors === USE_STATE_VALUE
-        ? this._state.core.additionalErrors
+        ? this._state.core?.additionalErrors
         : additionalErrors;
     this.updateCore(
       Actions.updateCore(newData, newSchema, newUischema, {

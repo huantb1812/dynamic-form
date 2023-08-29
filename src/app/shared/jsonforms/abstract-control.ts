@@ -115,7 +115,7 @@ export abstract class JsonFormsAbstractControl<
         } = props;
         this.label = computeLabel(
           label,
-          required,
+          required || false,
           config ? config.hideRequiredAsterisk : false
         );
         this.data = data;
@@ -125,8 +125,12 @@ export abstract class JsonFormsAbstractControl<
         this.hidden = !visible;
         this.scopedSchema = schema;
         this.rootSchema = rootSchema;
-        this.description =
-          this.scopedSchema !== undefined ? this.scopedSchema.description : '';
+        if (this.scopedSchema !== undefined) {
+          this.description = this.scopedSchema.description || '';
+        } else {
+          this.description = '';
+        }
+
         this.id = props.id;
         this.form.setValue(data);
         this.propsPath = path;
@@ -154,7 +158,7 @@ export abstract class JsonFormsAbstractControl<
     return this.enabled;
   }
 
-  protected getOwnProps(): OwnPropsOfControl {
+  protected override getOwnProps(): OwnPropsOfControl {
     const props: OwnPropsOfControl = {
       uischema: this.uischema,
       schema: this.schema,
