@@ -12,7 +12,7 @@ import {
 @Component({
   selector: 'app-json-forms',
   templateUrl: './json-forms.component.html',
-  styleUrls: ['./json-forms.component.css']
+  styleUrls: ['./json-forms.component.css'],
 })
 export class JsonFormsComponent implements OnInit {
   renderers1 = angularMaterialRenderers;
@@ -68,9 +68,10 @@ export class JsonFormsComponent implements OnInit {
     required: ['name', 'due_date'],
   };
   data1 = {};
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
+  ngOnInit() {}
+  onChangeModel(event:any) {
+    console.log(event);
   }
-
 }
