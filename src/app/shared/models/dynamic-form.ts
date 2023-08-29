@@ -6,5 +6,5 @@ export interface DynamicForm {
   status: string;
   schema: any;
   uischema: any;
-  data: string;
+  data: any;
 }

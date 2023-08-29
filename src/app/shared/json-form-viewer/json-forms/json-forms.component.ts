@@ -1,6 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { angularMaterialRenderers } from '../../json-forms-angular-material';
-
+import {
+  Actions,
+  JsonFormsI18nState,
+  JsonFormsRendererRegistryEntry,
+  JsonSchema,
+  UISchemaElement,
+  UISchemaTester,
+  ValidationMode,
+} from '@jsonforms/core';
 @Component({
   selector: 'app-json-forms',
   templateUrl: './json-forms.component.html',
@@ -8,8 +16,8 @@ import { angularMaterialRenderers } from '../../json-forms-angular-material';
 })
 export class JsonFormsComponent implements OnInit {
   renderers1 = angularMaterialRenderers;
-  @Input() schema?: string = '';
-  @Input() uischema?: string = '';
+  @Input() schema: JsonSchema;
+  @Input() uischema: UISchemaElement;
   @Input() data?: string = '';
   uischema1 = {
     type: 'VerticalLayout',
