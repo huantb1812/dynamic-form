@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  width: 1000px;
+}
+
+ngx-monaco-editor {
+  display: block;
+  height: 500px ;
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  column-gap: 10px;
+  flex-direction: row;
+  align-content: center;
+  justify-content: flex-end;
+}

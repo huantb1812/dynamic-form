@@ -1,5 +1,10 @@
-:host{
+:host {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 30px;
+  .actions {
+    position: absolute;
+    z-index: 99;
+    right: 0;
+  }
 }

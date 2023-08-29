@@ -10,6 +10,8 @@ import { JsonFormViewerModule } from './json-form-viewer/json-form-viewer.module
 import { FieldDetailsComponent } from './field-details/field-details.component';
 import { DialogModule } from '@angular/cdk/dialog';
 import { DialogInitANewDfComponent } from './dialog-init-a-new-df/dialog-init-a-new-df.component';
+import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
+import { DialogEditorCodeComponent } from './dialog-editor-code/dialog-editor-code.component';
 
 @NgModule({
   imports: [
@@ -19,6 +21,7 @@ import { DialogInitANewDfComponent } from './dialog-init-a-new-df/dialog-init-a-
     FormsModule,
     JsonFormViewerModule,
     DialogModule,
+    MonacoEditorModule
   ],
   declarations: [
     HeaderPageComponent,
@@ -27,6 +30,7 @@ import { DialogInitANewDfComponent } from './dialog-init-a-new-df/dialog-init-a-
     FieldsComponent,
     FieldDetailsComponent,
     DialogInitANewDfComponent,
+    DialogEditorCodeComponent
   ],
   exports: [
     MaterialsModule,
@@ -40,6 +44,8 @@ import { DialogInitANewDfComponent } from './dialog-init-a-new-df/dialog-init-a-
     DialogModule,
     DialogInitANewDfComponent,
     DialogModule,
+    MonacoEditorModule,
+    DialogEditorCodeComponent
   ],
 })
 export class SharedModuleModule {}

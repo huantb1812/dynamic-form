@@ -1,5 +1,8 @@
 <mat-tab-group>
   <mat-tab label="Schema">
+    <button mat-icon-button color="primary" class="actions" (click)="onEditSchema()">
+      <mat-icon>edit_note</mat-icon>
+    </button>
     <code>
       <pre>
     {{ schema | json }}

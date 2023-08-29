@@ -81,6 +81,10 @@
           "postalCode": {
             "type": "string",
             "maxLength": 5
+          },
+          "address": {
+            "type": "string",
+            "description": ""
           }
         },
         "required": [
@@ -138,6 +142,10 @@
                 ]
               }
             ]
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/address"
           }
         ]
       },
@@ -167,6 +175,10 @@
           "description": {
             "type": "string",
             "description": ""
+          },
+          "address": {
+            "type": "string",
+            "description": ""
           }
         },
         "required": []
@@ -181,6 +193,37 @@
           {
             "type": "Control",
             "scope": "#/properties/description"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/address"
+          }
+        ]
+      },
+      "data": {}
+    },
+    {
+      "id": "1a014417-631a-4bc6-98d6-e5117117b63b",
+      "name": "ABC001",
+      "title": "ABC001",
+      "lastUpdateTime": "29/08/2023",
+      "status": "closed",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "fullname": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": []
+      },
+      "uischema": {
+        "type": "VerticalLayout",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/fullname"
           }
         ]
       },
