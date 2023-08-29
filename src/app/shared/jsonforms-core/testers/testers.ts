@@ -23,14 +23,16 @@
   THE SOFTWARE.
 */
 
-import isEmpty from 'lodash/isEmpty';
-import get from 'lodash/get';
-import endsWith from 'lodash/endsWith';
-import last from 'lodash/last';
-import isArray from 'lodash/isArray';
-import reduce from 'lodash/reduce';
-import toPairs from 'lodash/toPairs';
-import includes from 'lodash/includes';
+import {
+  isEmpty,
+  get,
+  endsWith,
+  last,
+  isArray,
+  reduce,
+  toPairs,
+  includes,
+} from 'lodash';
 import type {
   Categorization,
   ControlElement,

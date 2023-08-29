@@ -5,17 +5,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
 import { JsonFormsComponent } from './json-forms/json-forms.component';
-// import { JsonFormsModule } from '@jsonforms/angular';
-// import { JsonFormsAngularMaterialModule } from '@jsonforms/angular-material';
+import { JsonFormsModule } from '../jsonforms-ng';
+import { JsonFormsAngularMaterialModule } from '../jsonforms-ng-material';
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MatTabsModule
-    // JsonFormsModule,
-    // JsonFormsAngularMaterialModule,
+    MatTabsModule,
+    JsonFormsModule,
+    JsonFormsAngularMaterialModule,
   ],
   declarations: [JsonFormViewerComponent, JsonFormsComponent],
   exports:[JsonFormViewerComponent, JsonFormsComponent]

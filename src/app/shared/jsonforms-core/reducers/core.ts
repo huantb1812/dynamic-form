@@ -23,13 +23,10 @@
   THE SOFTWARE.
 */
 
-import cloneDeep from 'lodash/cloneDeep';
 import setFp from 'lodash/fp/set';
 import unsetFp from 'lodash/fp/unset';
-import get from 'lodash/get';
-import filter from 'lodash/filter';
-import isEqual from 'lodash/isEqual';
-import isFunction from 'lodash/isFunction';
+import { set, unset } from 'lodash';
+import { cloneDeep, filter, get, isEqual, isFunction } from 'lodash';
 import type Ajv from 'ajv';
 import type { ErrorObject, ValidateFunction } from 'ajv';
 import {

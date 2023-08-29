@@ -22,23 +22,51 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
 */
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+} from '@angular/core';
+import {
+  HorizontalLayout,
+  RankedTester,
+  rankWith,
+  uiTypeIs,
+} from '../../jsonforms-core';
+import { LayoutRenderer } from './layout.renderer';
+import { JsonFormsAngularService } from '../../jsonforms-ng';
 
-import { merge } from 'lodash';
-import { SET_CONFIG, SetConfigAction } from '../actions';
-import { configDefault } from '../configDefault';
-import type { Reducer } from '../util';
-
-const applyDefaultConfiguration = (config: any = {}) =>
-  merge({}, configDefault, config);
-
-export const configReducer: Reducer<any, SetConfigAction> = (
-  state = applyDefaultConfiguration(),
-  action
-) => {
-  switch (action.type) {
-    case SET_CONFIG:
-      return applyDefaultConfiguration(action.config);
-    default:
-      return state;
+@Component({
+  selector: 'HorizontalLayoutRenderer',
+  template: `
+    <div
+      fxLayout="row wrap"
+      fxLayoutGap="16px"
+      [fxHide]="hidden"
+      fxLayoutAlign="center start"
+    >
+      <div
+        *ngFor="
+          let props of uischema | layoutChildrenRenderProps : schema : path;
+          trackBy: trackElement
+        "
+        fxFlex
+      >
+        <jsonforms-outlet [renderProps]="props"></jsonforms-outlet>
+      </div>
+    </div>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class HorizontalLayoutRenderer extends LayoutRenderer<HorizontalLayout> {
+  constructor(
+    jsonFormsService: JsonFormsAngularService,
+    changeDetectionRef: ChangeDetectorRef
+  ) {
+    super(jsonFormsService, changeDetectionRef);
   }
-};
+}
+export const horizontalLayoutTester: RankedTester = rankWith(
+  1,
+  uiTypeIs('HorizontalLayout')
+);

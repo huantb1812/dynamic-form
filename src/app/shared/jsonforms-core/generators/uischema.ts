@@ -23,9 +23,7 @@
   THE SOFTWARE.
 */
 
-import isEmpty from 'lodash/isEmpty';
-import startCase from 'lodash/startCase';
-import keys from 'lodash/keys';
+import { isEmpty, startCase, keys } from 'lodash';
 import {
   ControlElement,
   isGroup,

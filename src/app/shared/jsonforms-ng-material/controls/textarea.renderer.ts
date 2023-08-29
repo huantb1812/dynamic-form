@@ -22,23 +22,38 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
 */
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { JsonFormsAngularService, JsonFormsControl } from '../../jsonforms-ng';
+import { isMultiLineControl, RankedTester, rankWith } from '../../jsonforms-core';
 
-import { merge } from 'lodash';
-import { SET_CONFIG, SetConfigAction } from '../actions';
-import { configDefault } from '../configDefault';
-import type { Reducer } from '../util';
-
-const applyDefaultConfiguration = (config: any = {}) =>
-  merge({}, configDefault, config);
-
-export const configReducer: Reducer<any, SetConfigAction> = (
-  state = applyDefaultConfiguration(),
-  action
-) => {
-  switch (action.type) {
-    case SET_CONFIG:
-      return applyDefaultConfiguration(action.config);
-    default:
-      return state;
+@Component({
+  selector: 'TextAreaRenderer',
+  template: `
+    <mat-form-field fxFlex [fxHide]="hidden">
+      <mat-label>{{ label }}</mat-label>
+      <textarea
+        matInput
+        (input)="onChange($event)"
+        [id]="id"
+        [formControl]="form"
+        (focus)="focused = true"
+        (focusout)="focused = false"
+      ></textarea>
+      <mat-hint *ngIf="shouldShowUnfocusedDescription() || focused">{{
+        description
+      }}</mat-hint>
+      <mat-error>{{ error }}</mat-error>
+    </mat-form-field>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class TextAreaRenderer extends JsonFormsControl {
+  constructor(jsonformsService: JsonFormsAngularService) {
+    super(jsonformsService);
   }
-};
+  getEventValue = (event: any) => event.target.value || undefined;
+}
+export const TextAreaRendererTester: RankedTester = rankWith(
+  2,
+  isMultiLineControl
+);

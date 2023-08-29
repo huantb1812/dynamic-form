@@ -22,23 +22,46 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
 */
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+} from '@angular/core';
+import {
+  RankedTester,
+  rankWith,
+  uiTypeIs,
+  VerticalLayout,
+} from '../../jsonforms-core';
+import { LayoutRenderer } from './layout.renderer';
+import { JsonFormsAngularService } from '../../jsonforms-ng';
 
-import { merge } from 'lodash';
-import { SET_CONFIG, SetConfigAction } from '../actions';
-import { configDefault } from '../configDefault';
-import type { Reducer } from '../util';
-
-const applyDefaultConfiguration = (config: any = {}) =>
-  merge({}, configDefault, config);
-
-export const configReducer: Reducer<any, SetConfigAction> = (
-  state = applyDefaultConfiguration(),
-  action
-) => {
-  switch (action.type) {
-    case SET_CONFIG:
-      return applyDefaultConfiguration(action.config);
-    default:
-      return state;
+@Component({
+  selector: 'VerticalLayoutRenderer',
+  template: `
+    <div fxLayout="column" fxLayoutGap="16px" [fxHide]="hidden">
+      <div
+        *ngFor="
+          let props of uischema | layoutChildrenRenderProps : schema : path;
+          trackBy: trackElement
+        "
+        fxFlex
+      >
+        <jsonforms-outlet [renderProps]="props"></jsonforms-outlet>
+      </div>
+    </div>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class VerticalLayoutRenderer extends LayoutRenderer<VerticalLayout> {
+  constructor(
+    jsonFormsService: JsonFormsAngularService,
+    changeDetectionRef: ChangeDetectorRef
+  ) {
+    super(jsonFormsService, changeDetectionRef);
   }
-};
+}
+export const verticalLayoutTester: RankedTester = rankWith(
+  1,
+  uiTypeIs('VerticalLayout')
+);

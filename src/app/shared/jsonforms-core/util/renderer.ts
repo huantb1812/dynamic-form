@@ -23,7 +23,7 @@
   THE SOFTWARE.
 */
 
-import get from 'lodash/get';
+import {get, find} from 'lodash';
 import {
   ControlElement,
   isLabelable,
@@ -31,7 +31,6 @@ import {
   LabelElement,
   UISchemaElement,
 } from '../models';
-import find from 'lodash/find';
 import {
   getUISchemas,
   getAjv,

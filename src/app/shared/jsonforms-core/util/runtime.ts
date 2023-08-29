@@ -23,7 +23,7 @@
   THE SOFTWARE.
 */
 
-import has from 'lodash/has';
+import {has} from 'lodash';
 import {
   AndCondition,
   Condition,

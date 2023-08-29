@@ -1,19 +1,19 @@
 /*
   The MIT License
-
+  
   Copyright (c) 2017-2019 EclipseSource Munich
   https://github.com/eclipsesource/jsonforms
-
+  
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
   in the Software without restriction, including without limitation the rights
   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
   copies of the Software, and to permit persons to whom the Software is
   furnished to do so, subject to the following conditions:
-
+  
   The above copyright notice and this permission notice shall be included in
   all copies or substantial portions of the Software.
-
+  
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -22,23 +22,26 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
 */
+import { Component, Input } from '@angular/core';
 
-import { merge } from 'lodash';
-import { SET_CONFIG, SetConfigAction } from '../actions';
-import { configDefault } from '../configDefault';
-import type { Reducer } from '../util';
+@Component({
+  selector: 'jsonforms-detail',
+  template: `
+    <div *ngIf="initialized">
+      <jsonforms-outlet [renderProps]="_item"></jsonforms-outlet>
+    </div>
+  `,
+})
+export class JsonFormsDetailComponent {
+  _item: any;
+  _schema: any;
+  initialized = false;
 
-const applyDefaultConfiguration = (config: any = {}) =>
-  merge({}, configDefault, config);
-
-export const configReducer: Reducer<any, SetConfigAction> = (
-  state = applyDefaultConfiguration(),
-  action
-) => {
-  switch (action.type) {
-    case SET_CONFIG:
-      return applyDefaultConfiguration(action.config);
-    default:
-      return state;
+  @Input()
+  set item(item: any) {
+    if (item) {
+      this._item = item;
+      this.initialized = true;
+    }
   }
-};
+}

@@ -23,7 +23,7 @@
   THE SOFTWARE.
 */
 
-import isEmpty from 'lodash/isEmpty';
+import {isEmpty} from 'lodash';
 import {
   getErrorTranslator,
   getAjv,

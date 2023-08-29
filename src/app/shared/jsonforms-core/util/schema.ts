@@ -23,7 +23,7 @@
   THE SOFTWARE.
 */
 
-import find from 'lodash/find';
+import {find} from 'lodash';
 import { JsonSchema } from '../models';
 
 export const getFirstPrimitiveProp = (schema: any) => {

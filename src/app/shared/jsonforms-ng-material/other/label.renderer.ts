@@ -22,32 +22,56 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
 */
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  JsonFormsAngularService,
+  JsonFormsBaseRenderer,
+} from '../../jsonforms-ng';
 import {
   JsonFormsState,
-  mapStateToControlProps,
-  mapStateToControlWithDetailProps,
-  StatePropsOfControl,
-  StatePropsOfControlWithDetail,
-} from '../jsonforms-core';
-import type { OnDestroy, OnInit } from '@angular/core';
-import { JsonFormsAbstractControl } from './abstract-control';
+  LabelElement,
+  mapStateToLabelProps,
+  OwnPropsOfLabel,
+  RankedTester,
+  rankWith,
+  uiTypeIs,
+} from '../../jsonforms-core';
+import { Subscription } from 'rxjs';
 
-export class JsonFormsControl
-  extends JsonFormsAbstractControl<StatePropsOfControl>
-  implements OnInit, OnDestroy
+@Component({
+  selector: 'LabelRenderer',
+  template: ` <label class="mat-title" fxFlex> {{ label }} </label> `,
+})
+export class LabelRenderer
+  extends JsonFormsBaseRenderer<LabelElement>
+  implements OnDestroy, OnInit
 {
-  protected mapToProps(state: JsonFormsState): StatePropsOfControl {
-    const props = mapStateToControlProps(state, this.getOwnProps());
-    return { ...props };
+  label: string;
+  visible: boolean;
+
+  private subscription: Subscription;
+
+  constructor(private jsonFormsService: JsonFormsAngularService) {
+    super();
+  }
+  ngOnInit() {
+    this.subscription = this.jsonFormsService.$state.subscribe({
+      next: (state: JsonFormsState) => {
+        const props = mapStateToLabelProps(
+          state,
+          this.getOwnProps() as OwnPropsOfLabel
+        );
+        this.visible = props.visible;
+        this.label = props.text;
+      },
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }
 
-export class JsonFormsControlWithDetail
-  extends JsonFormsAbstractControl<StatePropsOfControlWithDetail>
-  implements OnInit, OnDestroy
-{
-  protected mapToProps(state: JsonFormsState): StatePropsOfControlWithDetail {
-    const props = mapStateToControlWithDetailProps(state, this.getOwnProps());
-    return { ...props };
-  }
-}
+export const LabelRendererTester: RankedTester = rankWith(4, uiTypeIs('Label'));

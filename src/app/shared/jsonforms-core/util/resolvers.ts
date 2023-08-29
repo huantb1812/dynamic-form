@@ -23,8 +23,7 @@
   THE SOFTWARE.
 */
 
-import isEmpty from 'lodash/isEmpty';
-import get from 'lodash/get';
+import {isEmpty, get} from 'lodash';
 import type { JsonSchema, JsonSchema7 } from '../models';
 import { decode } from './path';
 

@@ -23,7 +23,7 @@
   THE SOFTWARE.
 */
 
-import isEmpty from 'lodash/isEmpty';
+import {isEmpty} from 'lodash';
 import { isLayout, UISchemaElement } from '../models';
 
 export type IterateCallback = (uischema: UISchemaElement) => void;

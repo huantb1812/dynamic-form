@@ -22,23 +22,31 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
 */
+import {
+  ControlElement,
+  getAjv,
+  getData,
+  isVisible,
+  JsonFormsState,
+  OwnPropsOfRenderer,
+} from '../../jsonforms-core';
 
-import { merge } from 'lodash';
-import { SET_CONFIG, SetConfigAction } from '../actions';
-import { configDefault } from '../configDefault';
-import type { Reducer } from '../util';
+export const controlWithoutLabel = (scope: string): ControlElement => ({
+  type: 'Control',
+  scope: scope,
+  label: false,
+});
 
-const applyDefaultConfiguration = (config: any = {}) =>
-  merge({}, configDefault, config);
-
-export const configReducer: Reducer<any, SetConfigAction> = (
-  state = applyDefaultConfiguration(),
-  action
+export const mapStateToVisible = (
+  state: JsonFormsState,
+  ownProps: OwnPropsOfRenderer
 ) => {
-  switch (action.type) {
-    case SET_CONFIG:
-      return applyDefaultConfiguration(action.config);
-    default:
-      return state;
-  }
+  const visible =
+    ownProps.visible !== undefined
+      ? ownProps.visible
+      : isVisible(ownProps.uischema, getData(state), undefined, getAjv(state));
+
+  return {
+    visible,
+  };
 };
