@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { angularMaterialRenderers } from '../../json-forms-angular-material';
 
 @Component({
   selector: 'app-json-forms',
@@ -6,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./json-forms.component.css']
 })
 export class JsonFormsComponent implements OnInit {
+  renderers1 = angularMaterialRenderers;
   @Input() schema?: string = '';
   @Input() uischema?: string = '';
   @Input() data?: string = '';

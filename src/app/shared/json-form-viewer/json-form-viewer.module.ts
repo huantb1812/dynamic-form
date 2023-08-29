@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
 import { JsonFormsComponent } from './json-forms/json-forms.component';
 import { JsonFormsModule } from '../jsonforms';
+import { JsonFormsAngularMaterialModule } from '../json-forms-angular-material';
 // import { JsonFormsModule } from '@jsonforms/angular';
 // import { JsonFormsAngularMaterialModule } from '@jsonforms/angular-material';
 
@@ -17,7 +18,8 @@ import { JsonFormsModule } from '../jsonforms';
     MatTabsModule,
     // JsonFormsModule,
     // JsonFormsAngularMaterialModule,
-    JsonFormsModule
+    JsonFormsModule,
+    JsonFormsAngularMaterialModule
   ],
   declarations: [JsonFormViewerComponent, JsonFormsComponent],
   exports:[JsonFormViewerComponent, JsonFormsComponent]
