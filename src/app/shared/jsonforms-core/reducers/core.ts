@@ -23,9 +23,8 @@
   THE SOFTWARE.
 */
 
-import setFp from 'lodash/fp/set';
-import unsetFp from 'lodash/fp/unset';
-import { set, unset } from 'lodash';
+import { set as setFp, unset as unsetFp } from 'lodash';
+// import { set, unset } from 'lodash';
 import { cloneDeep, filter, get, isEqual, isFunction } from 'lodash';
 import type Ajv from 'ajv';
 import type { ErrorObject, ValidateFunction } from 'ajv';
