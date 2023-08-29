@@ -35,7 +35,6 @@ export class DialogEditorCodeComponent implements OnInit {
   }
 
   ngOnInit() {
-    setTimeout(() => {}, 1000);
   }
   onSave() {
     if (this.formNameControl.valid) {
@@ -47,7 +46,6 @@ export class DialogEditorCodeComponent implements OnInit {
     //  this.editor = editor;
     setTimeout(() => {
       editor.getAction('editor.action.formatDocument').run();
-
-    }, 200);
+    }, 100);
   }
 }
