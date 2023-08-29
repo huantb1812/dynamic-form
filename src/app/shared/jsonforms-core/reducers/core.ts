@@ -23,8 +23,10 @@
   THE SOFTWARE.
 */
 
-import { set as setFp, unset as unsetFp } from 'lodash';
-// import { set, unset } from 'lodash';
+// import setFp from 'lodash/fp/set';
+// import unsetFp from 'lodash/fp/unset';
+import { set, unset } from 'lodash';
+import * as _ from 'lodash';
 import { cloneDeep, filter, get, isEqual, isFunction } from 'lodash';
 import type Ajv from 'ajv';
 import type { ErrorObject, ValidateFunction } from 'ajv';
@@ -44,6 +46,8 @@ import {
 } from '../actions';
 import { createAjv, decode, isOneOfEnumSchema, Reducer } from '../util';
 import type { JsonSchema, UISchemaElement } from '../models';
+const setFp = _.set;
+const unsetFp = _.unset;
 
 export const validate = (
   validator: ValidateFunction | undefined,
@@ -284,13 +288,13 @@ export const coreReducer: Reducer<JsonFormsCore, CoreActions> = (
         const newData = action.updater(cloneDeep(oldData));
         let newState: any;
         if (newData !== undefined) {
-          newState = setFp(
+          newState = _.set(
             action.path,
             newData,
             state.data === undefined ? {} : state.data
           );
         } else {
-          newState = unsetFp(
+          newState = _.unset(
             action.path,
             state.data === undefined ? {} : state.data
           );
