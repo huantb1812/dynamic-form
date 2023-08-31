@@ -26,5 +26,12 @@
   .footer{
     height: 20px;
     background-color: $primary;
+    font-size: 12px;
+    line-height: 12px;
+    color:#fff;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 30px;
   }
 }

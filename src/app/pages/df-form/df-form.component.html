@@ -1,6 +1,6 @@
 <mat-toolbar class="header" color="primary">{{ selected?.title }}</mat-toolbar>
 <mat-drawer-container class="container" autosize>
-  <mat-drawer #drawer class="sidenav" mode="side">
+  <mat-drawer #drawer class="sidenav" mode="side" opened>
     <app-fields (changeField)="onChangeField($event)" (close)="drawer.toggle()">
     </app-fields>
     <app-field-details
@@ -25,4 +25,4 @@
     </app-json-form-viewer>
   </div>
 </mat-drawer-container>
-<div class="footer"></div>
+<div class="footer">https://www.synapxe.sg/</div>
