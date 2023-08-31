@@ -4,7 +4,6 @@ import { MaterialsModule } from './materials.module';
 import { HeaderPageComponent } from './header-page/header-page.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HeaderDfFormComponent } from './header-df-form/header-df-form.component';
 import { FieldsComponent } from './fields-layouts/fields.component';
 import { JsonFormViewerModule } from './json-form-viewer/json-form-viewer.module';
 import { FieldDetailsComponent } from './field-details/field-details.component';
@@ -25,7 +24,6 @@ import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
   declarations: [
     HeaderPageComponent,
     FilterPipe,
-    HeaderDfFormComponent,
     FieldsComponent,
     FieldDetailsComponent,
     DialogInitANewDfComponent,
@@ -35,7 +33,6 @@ import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
     HeaderPageComponent,
     FilterPipe,
     FormsModule,
-    HeaderDfFormComponent,
     FieldsComponent,
     FieldDetailsComponent,
     DialogModule,
