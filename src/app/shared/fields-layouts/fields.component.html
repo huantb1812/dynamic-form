@@ -6,9 +6,9 @@
     </button>
   </div>
 </div>
-<div class="fields">
+<div class="field-layouts">
   <div
-    class="field-item"
+    class="field-layout-item"
     *ngFor="let item of fields; let i = index"
     matRipple
     (click)="onAddField(item)"
@@ -17,4 +17,13 @@
     <span class="title">{{ item.displayName }}</span>
   </div>
 </div>
-
+<div class="field-layouts">
+  <div
+    class="field-layout-item"
+    *ngFor="let item of layouts; let i = index"
+    matRipple
+  >
+    <mat-icon aria-hidden="false">{{ item.icon }}</mat-icon>
+    <span class="title">{{ item.displayName }}</span>
+  </div>
+</div>

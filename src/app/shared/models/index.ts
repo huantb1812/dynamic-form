@@ -1,2 +1,2 @@
 export * from './dynamic-form';
-export { FIELDS } from './containts';
+export { FIELDS , LAYOUTS} from './containts';

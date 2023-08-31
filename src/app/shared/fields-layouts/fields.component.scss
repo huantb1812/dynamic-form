@@ -19,10 +19,11 @@
       padding-left: 15px;
     }
   }
-  .fields {
+  .field-layouts {
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
-    .field-item {
+    .field-layout-item {
       display: flex;
       justify-content: flex-start;
       align-items: flex-end;

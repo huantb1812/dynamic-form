@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { DynamicForm, FIELDS } from '../models';
+import { DynamicForm, FIELDS, LAYOUTS } from '../models';
 import { Field } from '../models/field';
 
 @Component({
@@ -9,6 +9,7 @@ import { Field } from '../models/field';
 })
 export class FieldsComponent implements OnInit {
   fields = FIELDS;
+  layouts = LAYOUTS;
   @Output()changeField: EventEmitter<any> = new EventEmitter();
   @Output()close: EventEmitter<any> = new EventEmitter();
   constructor() {}
