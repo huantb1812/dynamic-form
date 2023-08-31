@@ -13,6 +13,7 @@ import { dynamicFormReducer } from './store/counter/df.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule, DatePipe } from '@angular/common';
+import { JsonFormViewerModule, MaterialsModule } from './shared';
 
 @NgModule({
   declarations: [AppComponent, DfListComponent, DfFormComponent],
@@ -22,7 +23,9 @@ import { CommonModule, DatePipe } from '@angular/common';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MaterialsModule,
     SharedModuleModule,
+    JsonFormViewerModule,
     StoreModule.forRoot({}, {}),
     // StoreModule.forRoot({ dynamicForm: dynamicFormReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),

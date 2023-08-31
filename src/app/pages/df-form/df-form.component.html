@@ -1,6 +1,6 @@
-<mat-toolbar class="header"  color="primary">{{ selected?.title }}</mat-toolbar>
+<mat-toolbar class="header" color="primary">{{ selected?.title }}</mat-toolbar>
 <mat-drawer-container class="container" autosize>
-  <mat-drawer #drawer class="sidenav" mode="over">
+  <mat-drawer #drawer class="sidenav" mode="side">
     <app-fields (changeField)="onChangeField($event)" (close)="drawer.toggle()">
     </app-fields>
     <app-field-details
@@ -25,4 +25,4 @@
     </app-json-form-viewer>
   </div>
 </mat-drawer-container>
-<mat-toolbar class="footer"  color="primary"></mat-toolbar>
+<div class="footer"></div>

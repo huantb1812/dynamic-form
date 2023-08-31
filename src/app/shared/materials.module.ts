@@ -13,6 +13,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
+import { DialogModule } from '@angular/cdk/dialog';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 @NgModule({
   imports: [
     CommonModule,
@@ -28,6 +30,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatCheckboxModule,
     MatSelectModule,
     MatTabsModule,
+    DialogModule,
+    DragDropModule
   ],
   declarations: [],
   exports: [
@@ -43,6 +47,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatCheckboxModule,
     MatSelectModule,
     MatTabsModule,
+    DialogModule,
+    DragDropModule
   ],
 })
 export class MaterialsModule {}

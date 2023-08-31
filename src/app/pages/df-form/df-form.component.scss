@@ -1,3 +1,5 @@
+@import './../../../styles/variable';
+
 :host {
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -20,5 +22,9 @@
 
   .sidenav {
     padding: 20px;
+  }
+  .footer{
+    height: 20px;
+    background-color: $primary;
   }
 }

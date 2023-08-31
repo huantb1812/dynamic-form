@@ -10,6 +10,7 @@ import { EditorCodeComponent } from './editor-code/editor-code.component';
 import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialsModule } from '../materials.module';
+import { DesignLayoutComponent } from './design-layout/design-layout.component';
 
 @NgModule({
   imports: [
@@ -19,8 +20,6 @@ import { MaterialsModule } from '../materials.module';
     ReactiveFormsModule,
     FormsModule,
     MaterialsModule,
-    // JsonFormsModule,
-    // JsonFormsAngularMaterialModule,
     JsonFormsModule,
     JsonFormsAngularMaterialModule,
     MonacoEditorModule,
@@ -29,6 +28,7 @@ import { MaterialsModule } from '../materials.module';
     JsonFormViewerComponent,
     JsonFormsComponent,
     EditorCodeComponent,
+    DesignLayoutComponent,
   ],
   exports: [JsonFormViewerComponent, JsonFormsComponent, EditorCodeComponent],
 })
