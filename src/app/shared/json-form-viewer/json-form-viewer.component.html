@@ -1,31 +1,17 @@
 <mat-tab-group>
   <mat-tab label="Schema">
-    <button mat-icon-button color="primary" class="actions" (click)="onEditSchema()">
-      <mat-icon>edit_note</mat-icon>
-    </button>
-    <code>
-      <pre>
-    {{ schema | json }}
-  </pre
-      >
-    </code>
+    <app-editor-code [code]="schemaCode"></app-editor-code>
   </mat-tab>
   <mat-tab label="UI Schema">
-    <code>
-      <pre>
-      {{ uischema | json }}
-</pre
-      >
-    </code>
-  </mat-tab>
+    <app-editor-code [code]="uischemaCode"></app-editor-code
+  ></mat-tab>
   <mat-tab label="Data">
-    <code>
-      <pre>
-      {{ data | json }}
-</pre
-      >
-    </code>
-  </mat-tab>
+    <app-editor-code [code]="dataCode"></app-editor-code
+  ></mat-tab>
 </mat-tab-group>
 
-<app-json-forms [schema]="schema" [uischema]="uischema" [data]="data"></app-json-forms>
+<app-json-forms
+  [schema]="schema"
+  [uischema]="uischema"
+  [data]="data"
+></app-json-forms>

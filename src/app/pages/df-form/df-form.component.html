@@ -1,7 +1,7 @@
 <app-header-df-form [title]="selected?.title"> </app-header-df-form>
 <mat-drawer-container class="container" autosize>
-  <mat-drawer #drawer class="sidenav" mode="side" opened>
-    <app-fields (changeField)="onChangeField($event)"> </app-fields>
+  <mat-drawer #drawer class="sidenav" mode="over" >
+    <app-fields (changeField)="onChangeField($event)" (close)="drawer.toggle()"> </app-fields>
     <app-field-details
       *ngIf="currentField"
       [field]="currentField"
@@ -11,11 +11,20 @@
   </mat-drawer>
 
   <div class="sidenav-content">
-    <app-json-form-viewer
-      [schema]="selected?.schema"
-      [uischema]="selected?.uischema"
-      [data]="selected?.data"
-    >
-    </app-json-form-viewer>
+    <div class="body">
+      <div>
+        <button mat-icon-button (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <app-json-form-viewer
+        [schema]="selected?.schema"
+        [uischema]="selected?.uischema"
+        [data]="selected?.data"
+      >
+      </app-json-form-viewer>
+    </div>
+    <div class="footer"></div>
+
   </div>
 </mat-drawer-container>

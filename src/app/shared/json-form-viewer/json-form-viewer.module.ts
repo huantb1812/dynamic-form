@@ -3,25 +3,33 @@ import { CommonModule } from '@angular/common';
 import { JsonFormViewerComponent } from './json-form-viewer.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTabsModule } from '@angular/material/tabs';
 import { JsonFormsComponent } from './json-forms/json-forms.component';
 import { JsonFormsModule } from '../jsonforms';
 import { JsonFormsAngularMaterialModule } from '../json-forms-angular-material';
-// import { JsonFormsModule } from '@jsonforms/angular';
-// import { JsonFormsAngularMaterialModule } from '@jsonforms/angular-material';
+import { EditorCodeComponent } from './editor-code/editor-code.component';
+import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialsModule } from '../materials.module';
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MatTabsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MaterialsModule,
     // JsonFormsModule,
     // JsonFormsAngularMaterialModule,
     JsonFormsModule,
-    JsonFormsAngularMaterialModule
+    JsonFormsAngularMaterialModule,
+    MonacoEditorModule,
   ],
-  declarations: [JsonFormViewerComponent, JsonFormsComponent],
-  exports:[JsonFormViewerComponent, JsonFormsComponent]
+  declarations: [
+    JsonFormViewerComponent,
+    JsonFormsComponent,
+    EditorCodeComponent,
+  ],
+  exports: [JsonFormViewerComponent, JsonFormsComponent, EditorCodeComponent],
 })
-export class JsonFormViewerModule { }
+export class JsonFormViewerModule {}

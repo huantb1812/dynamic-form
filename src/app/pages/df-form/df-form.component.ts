@@ -74,4 +74,7 @@ export class DfFormComponent implements OnInit {
       this.selected.uischema.elements.push(element);
     }
   }
+  onToggleMenu(){
+
+  }
 }

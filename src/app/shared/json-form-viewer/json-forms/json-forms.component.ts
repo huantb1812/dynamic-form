@@ -1,77 +1,26 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { angularMaterialRenderers } from '../../json-forms-angular-material';
-import {
-  Actions,
-  JsonFormsI18nState,
-  JsonFormsRendererRegistryEntry,
-  JsonSchema,
-  UISchemaElement,
-  UISchemaTester,
-  ValidationMode,
-} from '@jsonforms/core';
+import { JsonSchema, UISchemaElement } from '@jsonforms/core';
 @Component({
   selector: 'app-json-forms',
   templateUrl: './json-forms.component.html',
   styleUrls: ['./json-forms.component.css'],
 })
 export class JsonFormsComponent implements OnInit {
-  renderers1 = angularMaterialRenderers;
+  renderers = angularMaterialRenderers;
   @Input() schema: JsonSchema;
   @Input() uischema: UISchemaElement;
   @Input() data?: string = '';
-  uischema1 = {
-    type: 'VerticalLayout',
-    elements: [
-      {
-        type: 'Control',
-        label: false,
-        scope: '#/properties/done',
-      },
-      {
-        type: 'Control',
-        scope: '#/properties/name',
-      },
-      {
-        type: 'HorizontalLayout',
-        elements: [
-          {
-            type: 'Control',
-            scope: '#/properties/due_date',
-          },
-          {
-            type: 'Control',
-            scope: '#/properties/recurrence',
-          },
-        ],
-      },
-    ],
-  };
-  schema1 = {
-    type: 'object',
-    properties: {
-      name: {
-        type: 'string',
-        minLength: 1,
-      },
-      done: {
-        type: 'boolean',
-      },
-      due_date: {
-        type: 'string',
-        format: 'date',
-      },
-      recurrence: {
-        type: 'string',
-        enum: ['Never', 'Daily', 'Weekly', 'Monthly'],
-      },
-    },
-    required: ['name', 'due_date'],
-  };
-  data1 = {};
+
+  newValue: any;
   constructor() {}
 
   ngOnInit() {}
-  onChangeModel(event:any) {
-    console.log(event);
+  onChangeModel(event: any) {
+    this.newValue = event;
+    // console.log(event);
+  }
+  onSubmit() {
+    console.log(this.newValue);
   }
 }

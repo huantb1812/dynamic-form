@@ -11,7 +11,6 @@ import { FieldDetailsComponent } from './field-details/field-details.component';
 import { DialogModule } from '@angular/cdk/dialog';
 import { DialogInitANewDfComponent } from './dialog-init-a-new-df/dialog-init-a-new-df.component';
 import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
-import { DialogEditorCodeComponent } from './dialog-editor-code/dialog-editor-code.component';
 
 @NgModule({
   imports: [
@@ -19,9 +18,9 @@ import { DialogEditorCodeComponent } from './dialog-editor-code/dialog-editor-co
     ReactiveFormsModule,
     MaterialsModule,
     FormsModule,
-    JsonFormViewerModule,
     DialogModule,
-    MonacoEditorModule
+    MonacoEditorModule,
+    JsonFormViewerModule
   ],
   declarations: [
     HeaderPageComponent,
@@ -30,7 +29,6 @@ import { DialogEditorCodeComponent } from './dialog-editor-code/dialog-editor-co
     FieldsComponent,
     FieldDetailsComponent,
     DialogInitANewDfComponent,
-    DialogEditorCodeComponent
   ],
   exports: [
     MaterialsModule,
@@ -39,13 +37,12 @@ import { DialogEditorCodeComponent } from './dialog-editor-code/dialog-editor-co
     FormsModule,
     HeaderDfFormComponent,
     FieldsComponent,
-    JsonFormViewerModule,
     FieldDetailsComponent,
     DialogModule,
     DialogInitANewDfComponent,
     DialogModule,
     MonacoEditorModule,
-    DialogEditorCodeComponent
+    JsonFormViewerModule
   ],
 })
 export class SharedModuleModule {}

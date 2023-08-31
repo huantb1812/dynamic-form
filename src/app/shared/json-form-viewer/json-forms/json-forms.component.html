@@ -3,6 +3,14 @@
     [data]="data"
     [schema]="schema"
     [uischema]="uischema"
-    [renderers]="renderers1"
+    [renderers]="renderers"
     (dataChange)="onChangeModel($event)"
   ></jsonforms>
+  <div class="actions">
+    <button type="button" mat-stroked-button>
+      Cancel
+    </button>
+    <button type="button" mat-raised-button color="primary" (click)="onSubmit()">
+      Submit
+    </button>
+  </div>

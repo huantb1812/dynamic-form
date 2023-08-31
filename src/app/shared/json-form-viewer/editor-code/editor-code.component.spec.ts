@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { DialogEditorCodeComponent } from './dialog-editor-code.component';
+import { EditorCodeComponent } from './editor-code.component';
 
-describe('DialogEditorCodeComponent', () => {
-  let component: DialogEditorCodeComponent;
-  let fixture: ComponentFixture<DialogEditorCodeComponent>;
+describe('EditorCodeComponent', () => {
+  let component: EditorCodeComponent;
+  let fixture: ComponentFixture<EditorCodeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DialogEditorCodeComponent ]
+      declarations: [ EditorCodeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DialogEditorCodeComponent);
+    fixture = TestBed.createComponent(EditorCodeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

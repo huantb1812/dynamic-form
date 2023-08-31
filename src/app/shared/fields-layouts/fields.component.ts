@@ -10,9 +10,13 @@ import { Field } from '../models/field';
 export class FieldsComponent implements OnInit {
   fields = FIELDS;
   @Output()changeField: EventEmitter<any> = new EventEmitter();
+  @Output()close: EventEmitter<any> = new EventEmitter();
   constructor() {}
   ngOnInit() {}
   onAddField(field: Field) {
     this.changeField.emit(field);
+  }
+  onClose(){
+    this.close.emit();
   }
 }
