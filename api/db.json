@@ -179,6 +179,10 @@
           "address": {
             "type": "string",
             "description": ""
+          },
+          "address4": {
+            "type": "string",
+            "description": ""
           }
         },
         "required": []
@@ -197,6 +201,10 @@
           {
             "type": "Control",
             "scope": "#/properties/address"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/address4"
           }
         ]
       },

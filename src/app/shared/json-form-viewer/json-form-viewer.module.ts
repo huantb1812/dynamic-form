@@ -11,6 +11,8 @@ import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialsModule } from '../materials.module';
 import { DesignLayoutComponent } from './design-layout/design-layout.component';
+import { VerticalLayoutComponent } from './vertical-layout/vertical-layout.component';
+import { HorizoltalLayoutComponent } from './horizoltal-layout/horizoltal-layout.component';
 
 @NgModule({
   imports: [
@@ -29,6 +31,8 @@ import { DesignLayoutComponent } from './design-layout/design-layout.component';
     JsonFormsComponent,
     EditorCodeComponent,
     DesignLayoutComponent,
+    VerticalLayoutComponent,
+    HorizoltalLayoutComponent
   ],
   exports: [JsonFormViewerComponent, JsonFormsComponent, EditorCodeComponent],
 })

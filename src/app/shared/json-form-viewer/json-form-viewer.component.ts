@@ -11,41 +11,39 @@ import { map } from 'rxjs';
   styleUrls: ['./json-form-viewer.component.scss'],
 })
 export class JsonFormViewerComponent {
-  // @Input() schema: any;
   _schema: any;
   schemaCode: string;
   @Input()
-  public set schema(v : any) {
+  public set schema(v: any) {
     this._schema = v;
     this.schemaCode = JSON.stringify(v);
   }
 
-  public get schema() : any {
+  public get schema(): any {
     return this._schema;
   }
-
 
   _uischema: any;
   uischemaCode: string;
   @Input()
-  public set uischema(v : any) {
+  public set uischema(v: any) {
     this._uischema = v;
     this.uischemaCode = JSON.stringify(v);
   }
 
-  public get uischema() : any {
+  public get uischema(): any {
     return this._uischema;
   }
 
   _data: any;
   dataCode: string;
   @Input()
-  public set data(v : any) {
+  public set data(v: any) {
     this._data = v;
     this.dataCode = JSON.stringify(v);
   }
 
-  public get data() : any {
+  public get data(): any {
     return this._data;
   }
 
@@ -62,22 +60,31 @@ export class JsonFormViewerComponent {
         this.selected = res;
       });
   }
-  onEditSchema() {
-    // const editorDialog = this.dialog.open<string>(DialogEditorCodeComponent, {
-    //   data: JSON.stringify(this.schema),
-    // });
-
-    // editorDialog.closed.subscribe((schema?: any) => {
-    //   if (schema != null && this.selected) {
-    //     this.selected.schema = schema;
-    //     console.log(schema);
-    //     this.httpClient
-    //       .put(
-    //         'http://localhost:3000/dynamicForms/' + this.selected.id,
-    //         this.selected
-    //       )
-    //       .subscribe((_) => {});
-    //   }
-    // });
+  onSaveSchema(schema: any) {
+    this.selected.schema = schema;
+    this.httpClient
+      .put('http://localhost:3000/dynamicForms/' + this.selected.id, {
+        ...this.selected,
+        schema,
+      })
+      .subscribe((_) => {});
+  }
+  onSaveUISchema(uischema: any) {
+    this.selected.uischema = uischema;
+    this.httpClient
+      .put('http://localhost:3000/dynamicForms/' + this.selected.id, {
+        ...this.selected,
+        uischema,
+      })
+      .subscribe((_) => {});
+  }
+  onSaveData(uischema: any) {
+    this.selected.uischema = uischema;
+    this.httpClient
+      .put('http://localhost:3000/dynamicForms/' + this.selected.id, {
+        ...this.selected,
+        uischema,
+      })
+      .subscribe((_) => {});
   }
 }

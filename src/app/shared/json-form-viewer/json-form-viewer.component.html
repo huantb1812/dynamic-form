@@ -3,13 +3,13 @@
     <app-design-layout></app-design-layout>
   </mat-tab>
   <mat-tab label="Schema">
-    <app-editor-code [code]="schemaCode"></app-editor-code>
+    <app-editor-code [code]="schemaCode" (saveData)="onSaveSchema($event)"></app-editor-code>
   </mat-tab>
   <mat-tab label="UI Schema">
-    <app-editor-code [code]="uischemaCode"></app-editor-code
+    <app-editor-code [code]="uischemaCode" (saveData)="onSaveUISchema($event)"></app-editor-code
   ></mat-tab>
   <mat-tab label="Data">
-    <app-editor-code [code]="dataCode"></app-editor-code
+    <app-editor-code [code]="dataCode"  (saveData)="onSaveData($event)"></app-editor-code
   ></mat-tab>
 </mat-tab-group>
 

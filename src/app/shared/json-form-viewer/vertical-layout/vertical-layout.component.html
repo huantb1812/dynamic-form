@@ -1,0 +1,17 @@
+<h2>Vertical Layout</h2>
+   <div
+    cdkDropList
+    id="screen"
+    [cdkDropListData]="doneList"
+    [cdkDropListConnectedTo]="'layouts'"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <div
+      class="example-box"
+      *ngFor="let item of doneList; let i = index"
+      cdkDrag
+    >
+      {{ item.displayName }}
+    </div>
+  </div>

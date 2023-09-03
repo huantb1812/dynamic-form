@@ -1,6 +1,12 @@
-import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
-import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import {
   MonacoEditorComponent,
   MonacoEditorConstructionOptions,
@@ -14,10 +20,16 @@ import {
 export class EditorCodeComponent implements OnInit {
   @Input() code: string = '{}';
   @ViewChild('editor') editor: MonacoEditorComponent;
+  @Output() saveData: EventEmitter<any> = new EventEmitter();
   editorOptions: MonacoEditorConstructionOptions = {
     language: 'json', // java, javascript, python, csharp, html, markdown, ruby
     theme: 'vs', // vs, vs-dark, hc-black
   };
+  ngOnChanges(changes: SimpleChanges): void {
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    //Add '${implements OnChanges}' to the class.
+    this.formatDocument(this.editor);
+  }
   constructor() {}
 
   ngOnInit() {}
@@ -29,13 +41,17 @@ export class EditorCodeComponent implements OnInit {
         obj = JSON.parse(obj);
       }
       console.log(obj);
+      this.saveData.emit(obj);
     }
   }
   editorInit(editor: any) {
     // Here you can access editor instance
     //  this.editor = editor;
+    this.editor = editor;
+    this.formatDocument(this.editor);
+  }
+  formatDocument(editor: any) {
     setTimeout(() => {
-      this.editor = editor;
       editor.getAction('editor.action.formatDocument').run();
     }, 100);
   }

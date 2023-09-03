@@ -24,7 +24,7 @@
   cdkDropListSortingDisabled
   id="layouts"
   #inProgress="cdkDropList"
-  [cdkDropListConnectedTo]="['screen']"
+  [cdkDropListConnectedTo]="['screen','horizontals']"
 >
   <ng-container *ngFor="let item of layouts; let i = index">
     <div class="field-layout-item" cdkDrag [cdkDragData]="item">

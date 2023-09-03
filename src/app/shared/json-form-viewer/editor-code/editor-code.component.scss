@@ -1,5 +1,11 @@
-:host{
-  // display: grid;
+:host {
+  display: contents;
+  position: relative;
+  button{
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
   // grid-template-rows: auto auto;
   // height: 100%;
   // .actions{
