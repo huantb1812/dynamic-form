@@ -61,30 +61,32 @@ export class JsonFormViewerComponent {
       });
   }
   onSaveSchema(schema: any) {
-    this.selected.schema = schema;
-    this.httpClient
-      .put('http://localhost:3000/dynamicForms/' + this.selected.id, {
-        ...this.selected,
-        schema,
-      })
-      .subscribe((_) => {});
+    this.selected = {
+      ...this.selected,
+      schema,
+    };
+    this.updateDB();
   }
   onSaveUISchema(uischema: any) {
-    this.selected.uischema = uischema;
-    this.httpClient
-      .put('http://localhost:3000/dynamicForms/' + this.selected.id, {
-        ...this.selected,
-        uischema,
-      })
-      .subscribe((_) => {});
+    this.selected = {
+      ...this.selected,
+      uischema,
+    };
+    this.updateDB();
   }
-  onSaveData(uischema: any) {
-    this.selected.uischema = uischema;
+  onSaveData(data: any) {
+    this.selected = {
+      ...this.selected,
+      data,
+    };
+    this.updateDB();
+  }
+  updateDB() {
     this.httpClient
-      .put('http://localhost:3000/dynamicForms/' + this.selected.id, {
-        ...this.selected,
-        uischema,
-      })
+      .put(
+        'http://localhost:3000/dynamicForms/' + this.selected.id,
+        this.selected
+      )
       .subscribe((_) => {});
   }
 }
