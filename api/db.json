@@ -266,6 +266,7 @@
               "JP",
               "US",
               "RU",
+              "VN",
               "Other"
             ]
           },
@@ -300,6 +301,8 @@
           }
         },
         "required": [
+          "fullname",
+          "name",
           "occupation",
           "nationality"
         ]
@@ -358,9 +361,10 @@
         ]
       },
       "data": {
-        "name": "John Biden",
+        "fullname": "Nguyen Van Huan",
+        "name": "Huan",
         "vegetarian": false,
-        "birthDate": "1985-06-02",
+        "birthDate": "1990-12-18",
         "personalData": {
           "age": 34
         },

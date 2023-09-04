@@ -9,7 +9,7 @@ import {
   CdkDropList,
   copyArrayItem,
 } from '@angular/cdk/drag-drop';
-import { Field } from '../../models/field';
+import { DfComponent } from '../../models/df-component';
 import { FIELDS, LAYOUTS } from '../../models';
 @Component({
   selector: 'app-design-layout',

@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
 import { DynamicForm } from 'src/app/shared';
-import { Field } from 'src/app/shared/models/field';
+import { DfComponent } from 'src/app/shared/models/df-component';
 import { Property } from 'src/app/shared/models/property';
 import { DynamicFormState } from 'src/app/store/counter/df.reducer';
 
@@ -15,7 +15,7 @@ import { DynamicFormState } from 'src/app/store/counter/df.reducer';
 })
 export class DfFormComponent implements OnInit {
   showFiller = true;
-  currentField?: Field;
+  currentField?: DfComponent;
   selected?: DynamicForm;
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -29,7 +29,7 @@ export class DfFormComponent implements OnInit {
   }
 
   ngOnInit() {}
-  onChangeField(field: Field) {
+  onChangeField(field: DfComponent) {
     this.currentField = field;
   }
   onClose(property: Property) {

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { DynamicForm, FIELDS, LAYOUTS } from '../models';
-import { Field } from '../models/field';
+import { DfComponent, TypeComponent } from '../models/df-component';
 
 @Component({
   selector: 'app-fields',
@@ -8,16 +8,16 @@ import { Field } from '../models/field';
   styleUrls: ['./fields.component.scss'],
 })
 export class FieldsComponent implements OnInit {
-  fields = FIELDS;
-  layouts = LAYOUTS;
-  @Output()changeField: EventEmitter<any> = new EventEmitter();
-  @Output()close: EventEmitter<any> = new EventEmitter();
+  fieldslayouts = [...LAYOUTS, ...FIELDS];
+  typeComponent = TypeComponent;
+  @Output() changeField: EventEmitter<any> = new EventEmitter();
+  @Output() close: EventEmitter<any> = new EventEmitter();
   constructor() {}
   ngOnInit() {}
-  onAddField(field: Field) {
+  onAddField(field: DfComponent) {
     this.changeField.emit(field);
   }
-  onClose(){
+  onClose() {
     this.close.emit();
   }
 }

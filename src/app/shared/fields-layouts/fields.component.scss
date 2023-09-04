@@ -31,11 +31,20 @@
       padding: 15px;
       border-bottom: 1px solid rgb(226, 232, 240);
       background-color: #fff;
-      &:hover{
+      &:hover {
         cursor: pointer;
       }
+      // &.df-layout:last-of-type {
+      //   background-color: gray;
+      // }
+      // &.df-control {
+      //   background-color: gray;
+      //   &:first-of-type{
+      //     background-color: red;
+      //   }
+      // }
     }
-    .example-custom-placeholder{
+    .example-custom-placeholder {
       background-color: #fff;
     }
   }

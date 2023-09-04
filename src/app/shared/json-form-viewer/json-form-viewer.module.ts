@@ -13,6 +13,7 @@ import { MaterialsModule } from '../materials.module';
 import { DesignLayoutComponent } from './design-layout/design-layout.component';
 import { VerticalLayoutComponent } from './vertical-layout/vertical-layout.component';
 import { HorizoltalLayoutComponent } from './horizoltal-layout/horizoltal-layout.component';
+import { CreateDynamicComponentComponent } from './create-dynamic-component/create-dynamic-component.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { HorizoltalLayoutComponent } from './horizoltal-layout/horizoltal-layout
     EditorCodeComponent,
     DesignLayoutComponent,
     VerticalLayoutComponent,
-    HorizoltalLayoutComponent
+    HorizoltalLayoutComponent,
+    CreateDynamicComponentComponent
   ],
   exports: [JsonFormViewerComponent, JsonFormsComponent, EditorCodeComponent],
 })

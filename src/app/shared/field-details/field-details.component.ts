@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { DynamicForm } from '../models';
-import { Field } from '../models/field';
+import { DfComponent } from '../models/df-component';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -16,7 +16,7 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./field-details.component.scss'],
 })
 export class FieldDetailsComponent implements OnInit, OnDestroy {
-  @Input() field?: Field;
+  @Input() field?: DfComponent;
   @Output() close: EventEmitter<any> = new EventEmitter();
   labelControl = new FormControl('', [Validators.required]);
   propertyNameControl = new FormControl('', [Validators.required]);

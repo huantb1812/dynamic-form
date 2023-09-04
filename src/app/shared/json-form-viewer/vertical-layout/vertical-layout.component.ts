@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Field } from '../../models/field';
+import { DfComponent } from '../../models/df-component';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
@@ -8,7 +8,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
   styleUrls: ['./vertical-layout.component.scss']
 })
 export class VerticalLayoutComponent implements OnInit {
-  doneList: Field[] = [];
+  doneList: DfComponent[] = [];
 
   @Input('connectedTo')
   connectedTo: string[];

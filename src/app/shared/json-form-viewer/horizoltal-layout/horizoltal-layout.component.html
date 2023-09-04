@@ -1,16 +1,17 @@
+<h2>Horizoltal Layout</h2>
 <div
-    cdkDropList
-    id="horizontals"
-    [cdkDropListData]="timePeriods"
-    [cdkDropListConnectedTo]="'layouts'"
-    class="example-list"
-    (cdkDropListDropped)="drop2($event)"
+  cdkDropList
+  id="horizontals"
+  [cdkDropListData]="timePeriods"
+  [cdkDropListConnectedTo]="'layouts'"
+  class="example-list"
+  (cdkDropListDropped)="drop2($event)"
+>
+  <div
+    class="example-box"
+    *ngFor="let item of timePeriods; let i = index"
+    cdkDrag
   >
-    <div
-      class="example-box"
-      *ngFor="let item of timePeriods; let i = index"
-      cdkDrag
-    >
-      {{ item.displayName }}
-    </div>
+    {{ item.displayName }}
   </div>
+</div>

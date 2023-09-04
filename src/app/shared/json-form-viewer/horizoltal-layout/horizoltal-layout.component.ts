@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Field } from '../../models/field';
+import { DfComponent } from '../../models/df-component';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
@@ -14,7 +14,7 @@ export class HorizoltalLayoutComponent implements OnInit {
   ngOnInit() {
   }
 
-  timePeriods: Field[] = [];
+  timePeriods: DfComponent[] = [];
 
   drop2(event: CdkDragDrop<any[]>) {
     // moveItemInArray(this.timePeriods, event.previousIndex, event.currentIndex);
