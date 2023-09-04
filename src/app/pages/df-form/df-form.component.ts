@@ -1,12 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { Observable, map } from 'rxjs';
+import { map } from 'rxjs';
 import { DynamicForm } from 'src/app/shared';
 import { DfComponent } from 'src/app/shared/models/df-component';
 import { Property } from 'src/app/shared/models/property';
-import { DynamicFormState } from 'src/app/store/counter/df.reducer';
 
 @Component({
   selector: 'app-df-form',

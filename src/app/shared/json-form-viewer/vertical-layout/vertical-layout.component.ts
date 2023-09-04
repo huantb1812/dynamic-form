@@ -14,7 +14,6 @@ export class VerticalLayoutComponent implements OnInit {
   connectedTo: string[];
   constructor() {}
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
 
   drop(event: CdkDragDrop<any[]>) {

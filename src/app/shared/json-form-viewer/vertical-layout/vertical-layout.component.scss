@@ -38,7 +38,7 @@
   }
 
   .cdk-drag-placeholder {
-    opacity: 0;
+    opacity: 1;
   }
 
   .cdk-drag-animating {
@@ -52,4 +52,8 @@
   .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   }
+}
+.custom-drag-preview {
+  background-color: #d3d3d3; /* Đặt màu nền cho mục kéo */
+  opacity: 0.7; /* Đặt độ mờ cho mục kéo */
 }

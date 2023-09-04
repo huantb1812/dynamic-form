@@ -52,7 +52,7 @@ export class EditorCodeComponent implements OnInit {
   }
   formatDocument(editor: any) {
     setTimeout(() => {
-      editor.getAction('editor.action.formatDocument').run();
+      editor?.getAction('editor.action.formatDocument').run();
     }, 100);
   }
 }

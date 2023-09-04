@@ -24,6 +24,9 @@ const routes: Routes = [
   {
     path: 'preview/:id',
     component: DfPreviewComponent,
+    resolve: {
+      dynamicForm: DynamicFormResolver,
+    },
   },
 ];
 

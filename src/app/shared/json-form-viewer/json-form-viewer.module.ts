@@ -34,7 +34,7 @@ import { CreateDynamicComponentComponent } from './create-dynamic-component/crea
     DesignLayoutComponent,
     VerticalLayoutComponent,
     HorizoltalLayoutComponent,
-    CreateDynamicComponentComponent
+    CreateDynamicComponentComponent,
   ],
   exports: [JsonFormViewerComponent, JsonFormsComponent, EditorCodeComponent],
 })

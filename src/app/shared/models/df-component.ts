@@ -2,7 +2,8 @@ export interface DfComponent {
   name: string;
   displayName: string;
   icon: string;
-  type: TypeComponent
+  type: TypeComponent,
+  isClone?:boolean
 }
 
 export enum TypeComponent {

@@ -1,4 +1,4 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,15 +8,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DfListComponent } from './pages/df-list/df-list.component';
 import { SharedModuleModule } from './shared/shared-module.module';
 import { DfFormComponent } from './pages/df-form/df-form.component';
-import { StoreModule } from '@ngrx/store';
-import { dynamicFormReducer } from './store/counter/df.reducer';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule, DatePipe } from '@angular/common';
 import { JsonFormViewerModule, MaterialsModule } from './shared';
+import { DfPreviewComponent } from './pages/df-preview/df-preview.component';
 
 @NgModule({
-  declarations: [AppComponent, DfListComponent, DfFormComponent],
+  declarations: [
+    AppComponent,
+    DfListComponent,
+    DfFormComponent,
+    DfPreviewComponent,
+  ],
   imports: [
     CommonModule,
     BrowserModule,
@@ -26,9 +29,6 @@ import { JsonFormViewerModule, MaterialsModule } from './shared';
     MaterialsModule,
     SharedModuleModule,
     JsonFormViewerModule,
-    StoreModule.forRoot({}, {}),
-    // StoreModule.forRoot({ dynamicForm: dynamicFormReducer }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],

@@ -22,12 +22,26 @@
   class="field-layouts"
   cdkDropList
   cdkDropListSortingDisabled
+  [cdkDropListEnterPredicate]="disallowDropPredicate"
   id="layouts"
   #inProgress="cdkDropList"
-  [cdkDropListConnectedTo]="['screen','horizontals']"
+  [cdkDropListConnectedTo]="['screen', 'horizontals']"
+  [cdkDropListData]="fieldslayouts"
+  (cdkDropListExited)="createItemClone($event)"
+  (cdkDropListEntered)="removeItemClone()"
 >
   <ng-container *ngFor="let item of fieldslayouts; let i = index">
-    <div class="field-layout-item" cdkDrag [cdkDragData]="item" [ngClass]="{' df-control': item.type===typeComponent.Control, ' df-layout': item.type===typeComponent.Layout}">
+    <div
+      class="field-layout-item"
+      cdkDrag
+      [cdkDragData]="item"
+      (cdkDragMoved)="dragMoved($event)"
+      (cdkDragReleased)="dragReleased($event)"
+      [ngClass]="{
+        ' df-control': item.type === typeComponent.Control,
+        ' df-layout': item.type === typeComponent.Layout
+      }"
+    >
       <mat-icon aria-hidden="false">{{ item.icon }}</mat-icon>
       <span class="title">{{ item.displayName }}</span>
     </div>

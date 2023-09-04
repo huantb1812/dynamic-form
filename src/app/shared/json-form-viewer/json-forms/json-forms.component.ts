@@ -4,7 +4,7 @@ import { JsonSchema, UISchemaElement } from '@jsonforms/core';
 @Component({
   selector: 'app-json-forms',
   templateUrl: './json-forms.component.html',
-  styleUrls: ['./json-forms.component.css'],
+  styleUrls: ['./json-forms.component.scss'],
 })
 export class JsonFormsComponent implements OnInit {
   renderers = angularMaterialRenderers;

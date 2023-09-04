@@ -3,9 +3,6 @@ import { Router } from '@angular/router';
 import { DynamicForm } from 'src/app/shared';
 import { Dialog } from '@angular/cdk/dialog';
 import { DialogInitANewDfComponent } from 'src/app/shared/dialog-init-a-new-df/dialog-init-a-new-df.component';
-import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { DynamicFormState } from 'src/app/store/counter/df.reducer';
 import { HttpClient } from '@angular/common/http';
 import { v4 as uuidv4 } from 'uuid';
 import { DatePipe } from '@angular/common';
@@ -24,7 +21,6 @@ export class DfListComponent implements OnInit {
   constructor(
     private router: Router,
     public dialog: Dialog,
-    private store: Store<{ dynamicForm: DynamicFormState }>,
     private http: HttpClient,
     private datepipe: DatePipe
   ) {
