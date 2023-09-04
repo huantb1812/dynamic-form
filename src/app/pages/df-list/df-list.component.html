@@ -18,7 +18,12 @@
         [(ngModel)]="filterForm"
         placeholder="Seach by Title"
       />
-      <button type="button" mat-raised-button color="primary" (click)="onCreateForm()">
+      <button
+        type="button"
+        mat-raised-button
+        color="primary"
+        (click)="onCreateForm()"
+      >
         Create Form
       </button>
     </div>
@@ -30,18 +35,26 @@
     >
       <div class="header">
         <div class="title">{{ item.title }}</div>
-        <div class="update-tiem">
-          Edited: {{ item.lastUpdateTime }}
-        </div>
+        <div class="update-tiem">Edited: {{ item.lastUpdateTime }}</div>
       </div>
       <div class="tail">
         <div class="status">{{ item.status }}</div>
         <div class="actions">
-          <button mat-stroked-button (click)="onEdit(item.id)">Design Form</button>
-          <button mat-stroked-button color="primary" (click)="onPreview(item.id)">Preview</button>
-          <button mat-stroked-button color="accent" (click)="onDuplicate(item.id)">Duplicate</button>
-          <button mat-stroked-button color="warn" (click)="onShare(item.id)">Share</button>
-          <button mat-stroked-button color="warn" (click)="onDelete(item.id)">Delete</button>
+          <button mat-icon-button (click)="onEdit(item.id)">
+            <mat-icon>app_registration</mat-icon>
+          </button>
+          <button mat-icon-button (click)="onPreview(item.id)">
+            <mat-icon>preview</mat-icon>
+          </button>
+          <button mat-icon-button (click)="onDuplicate(item.id)">
+            <mat-icon>content_copy</mat-icon>
+          </button>
+          <button mat-icon-button (click)="onShare(item.id)">
+            <mat-icon>share</mat-icon>
+          </button>
+          <button mat-icon-button (click)="onDelete(item.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
         </div>
       </div>
     </div>
@@ -58,7 +71,12 @@
         [(ngModel)]="filterMasterForm"
         placeholder="Seach by Title"
       />
-      <button type="button" mat-raised-button color="primary" (click)="onCreateForm()">
+      <button
+        type="button"
+        mat-raised-button
+        color="primary"
+        (click)="onCreateForm()"
+      >
         Create Form
       </button>
     </div>
@@ -73,17 +91,26 @@
     >
       <div class="header">
         <div class="title">{{ item.title }}</div>
-        <div class="update-tiem">
-          Edited: {{ item.lastUpdateTime }}
-        </div>
+        <div class="update-tiem">Edited: {{ item.lastUpdateTime }}</div>
       </div>
       <div class="tail">
         <div class="status">{{ item.status }}</div>
         <div class="actions">
-          <button mat-stroked-button (click)="onEdit(item.id)">Edit</button>
-          <button mat-stroked-button color="primary" (click)="onPreview(item.id)">Preview</button>
-          <button mat-stroked-button color="accent" (click)="onDuplicate(item.id)">Duplicate</button>
-          <button mat-stroked-button color="warn" (click)="onShare(item.id)">Share</button>
+          <button mat-icon-button (click)="onEdit(item.id)">
+            <mat-icon>app_registration</mat-icon>
+          </button>
+          <button mat-icon-button (click)="onPreview(item.id)">
+            <mat-icon>preview</mat-icon>
+          </button>
+          <button mat-icon-button (click)="onDuplicate(item.id)">
+            <mat-icon>content_copy</mat-icon>
+          </button>
+          <button mat-icon-button (click)="onShare(item.id)">
+            <mat-icon>share</mat-icon>
+          </button>
+          <button mat-icon-button (click)="onDelete(item.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
         </div>
       </div>
     </div>

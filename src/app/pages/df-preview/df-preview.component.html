@@ -1,4 +1,10 @@
-
+<mat-toolbar class="header" color="primary">
+  <span>{{ selected?.title }}</span>
+  <span class="spacer"></span>
+  <button mat-icon-button (click)="onBack()">
+    <mat-icon>arrow_back</mat-icon>
+  </button></mat-toolbar
+>
 <app-json-forms
   [schema]="selected.schema"
   [uischema]="selected.uischema"
