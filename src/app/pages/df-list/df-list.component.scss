@@ -50,10 +50,19 @@
           display: flex;
           column-gap: 30px;
           align-items: center;
-          .status{}
-          .actions{
+          .status {
+          }
+          .actions {
             display: flex;
             column-gap: 5px;
+            button {
+              position: relative;
+              font-size: 10px;
+              display: grid;
+              grid-template-rows: 1fr auto;
+              align-content: center;
+              justify-items: center;
+            }
           }
         }
       }

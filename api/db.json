@@ -211,33 +211,6 @@
       "data": {}
     },
     {
-      "id": "1a014417-631a-4bc6-98d6-e5117117b63b",
-      "name": "ABC001",
-      "title": "ABC001",
-      "lastUpdateTime": "29/08/2023",
-      "status": "closed",
-      "schema": {
-        "type": "object",
-        "properties": {
-          "fullname": {
-            "type": "string",
-            "description": ""
-          }
-        },
-        "required": []
-      },
-      "uischema": {
-        "type": "VerticalLayout",
-        "elements": [
-          {
-            "type": "Control",
-            "scope": "#/properties/fullname"
-          }
-        ]
-      },
-      "data": {}
-    },
-    {
       "id": "dd2c91be-5136-44b1-9698-299a0e357b03",
       "name": "NewForm001",
       "title": "NewForm001",
